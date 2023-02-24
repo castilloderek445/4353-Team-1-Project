@@ -7,30 +7,32 @@
     <head>
         <meta charset="utf-8">
         <title>Sign Up</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style_signup.css">
     </head>
-    <body>
-        <div class="NewClient">
-            <form name="signup_form">
-                <div class="container">
-                <h1>Sign Up</h1>
-                <h2>Please fill in the following information. All fields with* are required.</h2>
 
-                <div class="email_container">
-                <label for="email"><b>Email*</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
-                </div>
+    <p class="title"><span><b>Sign Up</b></span></p>
+    <p class="subtitle"><span>Please fill in the following information. All fields with* are required.</span></p>
 
-                <div class="company_container">
-                    <label for="company name"><b>Company Name*</b></label>
-                    <input type="text" placeholder="Enter Name" name="name" required>
-                </div>
 
-                <div class="addr_container">
-                    <label for="address"><b>Address*</b></label>
-                    <input type="text" placeholder="Enter Street Address" name="street" required>
-                    <input type="text" placeholder="Zip Code/PO box" name="zipcode" required>
-                    <select name="state"> State: 
+
+    <div class="NewClient">
+        <table class="notiTable">
+            <tr>
+                <th><label for="email">Email*:</label></th>
+                <td><input type="text" placeholder="Enter Email" name="email" required></td>
+            </tr>
+            <tr>
+                <th><label for="email">Company Name*:</label></th>
+                <td><input type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Password">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="name">State:</label></th>
+                <td>
+                    <select name="state"> State:
                         <option value="sel_state" selected>Select State</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -84,21 +86,35 @@
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
                     </select>
-                </div>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="name">Zip:</label></th>
+                <td><input type="text" id="zip" placeholder="New zip..." /></td>
+            </tr>
+            <tr>
+                <th><label for="email">Password:</label></th>
+                <td><input type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Password">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="email">Repeat Password:</label></th>
+                <td><input type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Password">
+                </td>
+            </tr>              
+        </table>
+    </div>
 
-                <div class="psw_container">
-                    <label for="psw"><b>Password*</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+    <div class="clientButtons">
+            <button class="clientButton">Sign Up</button>
+            <button class="clientButton">Cancel</button>
+    </div>
 
-                    <label for="psw-repeat"><b>Repeat Password*</b></label>
-                    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-                </div>
 
-                <div class="clearfix">
-                  <button type="button" class="cancelbtn">Cancel</button>
-                  <button type="submit" class="signupbtn">Sign Up</button>
-                </div>
-            </form>
-        </div>
-    </body>
 </html>

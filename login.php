@@ -7,38 +7,38 @@
     <head>
         <meta charset="utf-8">
         <title>Login</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style_login.css">
     </head>
-    <body>
 
 
-        <div class="login_content">
+    <div>
+        <p class="title"><span><b>Log In</b></span></p>
+    </div>
 
-        </div>
-        <div class="login">
-            <form name="login_form">
-                    <h1>Log In</h1>
-                    <div class="enter_email">
-                        <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="Enter Email" name="email" required>
-                    </div>
-
-                    <div class="enter_pw">
-                        <label for="email"><b>Password</b></label>
-                        <input type="password"
-                            class="form-control"
-                            id="password"
-                            placeholder="Password">
-                    </div>
-            </form>
-            <ul></ul>
-            <div class="LoginButton">
-                <button type="button" class="Login">Log In</button>
-            </div>
-            <p>If new client please select <a></a> <button type="button" class="Sign Up"><a href="NewClient.php">Sign Up</a></button>
-        </div>
+    <div class="login_content">
 
 
+        <table class="notiTable">
+            <tr>
+                <th><label for="email">Email</label></th>
+                <td><input type="text" placeholder="Enter Email" name="email" required></td>
+            </tr>
+            <tr>
+                <th><label for="email">Password</label></th>
+                <td><input type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Password">
+                </td>
+            </tr>
+        </table>
+    </div>
 
-    </body>
+    <div class="clientButtons">
+        <button type="button" class="clientButton">Log In</button>
+        <!-- <p>If new client please select <a></a> <button type="button" class="Sign Up"><a href="NewClient.php">Sign Up</a></button> -->
+    </div>
+
+
+
 </html>
