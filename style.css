@@ -5,7 +5,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 body {
-    background-color: rgb(239, 239, 239);
+    background-color: #4B5A6C;
 }
 
 nav {
@@ -20,16 +20,32 @@ nav {
 
 /* move around entire nav inside website */
 ul {
-    text-align: center;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr repeat(5,auto) 1fr;
+    grid-column-gap: 5px;
+    justify-items: center;
 }
 
 /* move around individual links inside unordered list */
 ul li {
     list-style: none;
-    display: inline-block;
-    line-height: 75px; /* center line height w/ navbar by matching height */
+    margin: 0px;
+    line-height: 75px;
+    padding: 0px 5px;
+
+    /* center line height w/ navbar by matching height */
 
 }
+
+ul li:nth-child(1) { 
+    margin-right: auto; 
+    padding: 0px 0px 0px 20px;
+
+
+}
+
 
 /* style text of links */
 ul li a {
@@ -40,8 +56,8 @@ ul li a {
     padding: 0 20px;
 }
 
-ul li:hover {
-    background-color: #FF9836;
+ul li:nth-child(2):hover, ul li:nth-child(3):hover, ul li:nth-child(4):hover, ul li:nth-child(5):hover, ul li:nth-child(6):hover {
+    background-color: #dc812c;
 }
 
 .getQuote_content {
