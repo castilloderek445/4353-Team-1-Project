@@ -95,6 +95,7 @@
                     <option value="WY">Wyoming</option>
                 </select>
             </form>
+            <button type="button"> Search</button>
         </div>
         <br>
         <h1>Registered Users</h1>
