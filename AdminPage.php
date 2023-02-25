@@ -31,7 +31,7 @@
                 padding-bottom:20px;
             }
             .BarButton{
-                height:40px;
+                height:65px;
                 border:2px solid black;
                 background-color: white;
                 margin-top: 35px;
@@ -47,22 +47,20 @@
         <main class="wrapper">
             <div class="SideBar">
                 <div class="BarButton">
+                    <br>
                     <a href="AdminPage.php">Main Panel</a><br>
                 </div>
                 <div class="BarButton">
+                    <br>
                     <a href="ViewUsers.php">Registered Users</a><br>
                 </div>
                 <div class="BarButton">
+                    <br>
                     <a href="ViewLocations.php">Location Info</a><br>
                 </div>
                 <div class="BarButton">
+                    <br>
                     <a href="AllQuotes.php">Logistics</a><br>
-                </div>
-                <div class="BarButton">
-                    <a href="#">Update Profile Info</a><br>
-                </div>
-                <div class="BarButton">
-                    <a href="#">Messages</a>
                 </div>
             </div>
             
