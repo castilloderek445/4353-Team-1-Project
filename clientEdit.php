@@ -5,7 +5,7 @@ include_once 'navbar.php';
 <!DOCTYPE html>
 <style>
     .clientBody {
-        background-color: #4B5A6C;
+        background: url('image02.jpg') no-repeat center fixed;
     }
 
     .wrapper {
