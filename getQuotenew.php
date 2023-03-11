@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <title>Get Quote NEW</title>
-        <link rel="stylesheet" href="style_quote.css">
+        <link rel="stylesheet" href="css/style_quote.css">
     </head>
 
     <p class="title"><span><b>Fuel Quote Form</b></span></p>
@@ -96,7 +96,7 @@
                     <td>
                         <input type="date" id="start" name="date"
                             min="2000-01-01" max="2030-12-31">
-                        <script src="getQuote.js"></script>
+                        <script src="backend/getQuote.js"></script>
                     </td>
                 </tr>
 
