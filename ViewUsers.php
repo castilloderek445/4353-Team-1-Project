@@ -30,13 +30,11 @@
     
     <body>
         <div class="SearchBar">
-            <form name ="SearchParams">
+            <form method="post" action="SearchBar.php" >
                 <h1> Search for: </h1>
-                <label for="SearchParams"> Must fill at least one for search: </label>
-                <hr>
                 <input type="text" placeholder="Enter User ID" name="id">
                 <br>
-                <input type="text" placeholder="Enter Username" name="name">
+                <input type="text" placeholder="Enter Username" name="username">
                 <br>
                 <input type="text" placeholder="Enter Zipcode" name="zipcode">
                 <br>
@@ -94,7 +92,11 @@
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select>
+                <br>
+                <input type ="submit">
             </form>
+
+
         </div>
         <br>
         <h1>Registered Users</h1>
@@ -103,12 +105,14 @@
                 <th>User ID</th>
                 <th>Username</th>
                 <th>Total Purchases</th>
+                <th>Address</th>
                 <th>Zip Code</th>
             </tr>
             <tr>
                 <td>0000</td>
                 <td>Jduarte</td>
                 <td>0</td>
+                <td>4401 Cougar Village dr.</td>
                 <td>77004</td>
             </tr>
         </table>
