@@ -35,7 +35,7 @@
                 <input type="text" placeholder="Enter Zipcode" name="zip">
                 <input type="text" placeholder="Enter City" name="city">
                 <br>
-                <input type="range" min="1" max="6" value="3" step=".01">
+                <input type="range" min="1" max="6" value="3" step=".01" name="price">
                 <br>
                 <select name="state"> State: 
                     <option value="sel_state" selected>Select State</option>

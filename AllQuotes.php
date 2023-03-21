@@ -35,13 +35,15 @@
                 <input type="text" placeholder="Enter Zipcode" name="zip">
                 <input type="text" placeholder="Enter City" name="city">
                 <br>
-                <input type="text" placeholder="Enter User Id" name="user">
-                <input type="text" placeholder="Enter Order Id" name="order">
+                <input type="text" placeholder="Enter User Id" name="userid">
+                <input type="text" placeholder="Enter Quote Id" name="quoteid">
                 <br>
-                <input type="date" name="date" value="2023-02-23">
+                <input type="date" name="date" value="00/00/0000">
                 <br>
                 <caption> Total Gallons: </caption>
-                <input type="range" name="gallons" min="1" max="50">
+                <input type="range" name="gallons" min="0" max="50" value="0">
+                <br>
+                <input type="text" placeholder="Enter Price" name="price">
                 <br>
                 <select name="state"> State: 
                     <option value="sel_state" selected>Select State</option>
@@ -108,20 +110,22 @@
     <h1>Requested Quotes</h1>
         <table>
             <tr>
-                <th>Date</th>
-                <th>Order Id</th>
-                <th>Address</th>
                 <th>Zipcode</th>
+                <th>City</th>
+                <th>State</th>
                 <th>User Id</th>
+                <th>Quote Id</th>
+                <th>Date</th>
                 <th>Total Gallons</th>
                 <th>Estimated Price</th>
             </tr>
             <tr>
-                <td>2/23/2023</td>
-                <td>0000</td>
-                <td>4401 Cougar Village dr.</td>
                 <td>77004</td>
+                <td>Houston</td>
+                <td>TX</td>
                 <td>0000</td>
+                <td>0001</td>
+                <td>2/23/2023</td>
                 <td>10</td>
                 <td>30.1</td>
             </tr>

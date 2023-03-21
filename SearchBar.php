@@ -20,7 +20,9 @@
         }
     }
 
-
+//can do an if for any type of search we need
+//just have to pass a hidden value with the search type
+//then insert your values you need
     if($searchtype == "User"){
         $userid = $_POST["id"];
         $username = $_POST["username"];
@@ -35,11 +37,34 @@
 
     if($searchtype == "Location"){
         $zipcode = $_POST["zip"];
-        echo "In locations";
+        $city = $_POST["city"];
+        $price = $_POST["price"];
+        $state = $_POST["state"];
+
+        if_empty($zipcode, "Zipcode");
+        if_empty($city, "City");
+        if_empty($price, "Average Price");
+        if_empty($state, "State");
     }
 
     if($searchtype == "Quote"){
-        echo "In Quotes";
+        $zipcode = $_POST["zip"];
+        $city = $_POST["city"];
+        $state = $_POST["state"];
+        $userid = $_POST["userid"];
+        $quoteid = $_POST["quoteid"];
+        $date = $_POST["date"];
+        $totalgal = $_POST["gallons"];
+        $price = $_POST["price"];
+
+        if_empty($zipcode, "Zipcode");
+        if_empty($city, "City");
+        if_empty($state, "State");
+        if_empty($userid, "User Id");
+        if_empty($quoteid, "Quote Id");
+        if_empty($date, "Date");
+        if_empty($totalgal, "Total Gallons");
+        if_empty($price, "Average Price");
     }
 
 
