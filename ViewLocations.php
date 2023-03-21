@@ -30,10 +30,8 @@
     
     <body>
     <div class="SearchBar">
-            <form name ="SearchParams">
+            <form method="post"  action="SearchBar.php">
                 <h1> Search for: </h1>
-                <label for="SearchParams"> Must fill at least one for search: </label>
-                <hr>
                 <input type="text" placeholder="Enter Zipcode" name="zip">
                 <input type="text" placeholder="Enter City" name="city">
                 <br>
@@ -93,10 +91,10 @@
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select>
-                <hr>
+                <br>
+                <input type="hidden" name="search" value="Location">
+                <input type ="submit" value="Search:">
             </form>
-            <br>
-            <button type="button"> Search</button>
     </div>
 
     <h1>Location info</h1>

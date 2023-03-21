@@ -30,7 +30,7 @@
     
     <body>
         <div class="SearchBar">
-            <form method="post" action="SearchBar.php" >
+            <form method="post" action="SearchBar.php">
                 <h1> Search for: </h1>
                 <input type="text" placeholder="Enter User ID" name="id">
                 <br>
@@ -93,7 +93,8 @@
                     <option value="WY">Wyoming</option>
                 </select>
                 <br>
-                <input type ="submit">
+                <input type="hidden" name="search" value="User">
+                <input type="submit" value="Search:">
             </form>
 
 

@@ -30,10 +30,8 @@
     
     <body>
     <div class="SearchBar">
-            <form name ="SearchParams">
+            <form method="post" action="SearchBar.php">
                 <h1> Search for: </h1>
-                <label for="SearchParams"> Must fill at least one for search: </label>
-                <hr>
                 <input type="text" placeholder="Enter Zipcode" name="zip">
                 <input type="text" placeholder="Enter City" name="city">
                 <br>
@@ -99,10 +97,12 @@
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select>
-                <hr>
+                <br>
+                <input type="hidden" name="search" value="Quote">
+                <input type ="submit" value="Search:">
             </form>
             <br>
-            <button type="button"> Search</button>
+
     </div>
 
     <h1>Requested Quotes</h1>
@@ -110,6 +110,7 @@
             <tr>
                 <th>Date</th>
                 <th>Order Id</th>
+                <th>Address</th>
                 <th>Zipcode</th>
                 <th>User Id</th>
                 <th>Total Gallons</th>
@@ -118,6 +119,7 @@
             <tr>
                 <td>2/23/2023</td>
                 <td>0000</td>
+                <td>4401 Cougar Village dr.</td>
                 <td>77004</td>
                 <td>0000</td>
                 <td>10</td>
