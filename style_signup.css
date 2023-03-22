@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: url('image02.jpg') no-repeat center fixed;  
+}
+
+.title {
+    padding-top: 25px;
+    text-align: center;
+    color: white;
+    font-size: 32pt;
+
+}
+
+.title span {
+    background-color: #FF9836;
+    padding: 5px 160px 28px 160px;
+}
+
+.subtitle {
+
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    color: white;
+    padding-bottom: 22px;
+}
+
+
+
+.login_content, .NewClient {
+    grid-area: 1 / 2 / 3 / 5;
+    background-color: #4B5A6C;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+}
+
+.notiTable {
+    align-self: center;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 20px;
+    font-family: Arial;
+    color: white;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.notiTable thead tr {
+    background-color: #FF9836;
+    color: #ffffff;
+    text-align: left;
+}
+
+.notiTable th {
+    background-color: #FF9836;
+    color: #ffffff;
+    padding: 12px 15px;
+}
+
+.notiTable td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+input[type=text],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-sizing: border-box;
+    color: white;
+}
+
+option:not(:first-of-type) {
+    color: black;
+}
+
+::placeholder {
+    color: white;
+}
+
+.clientButtons {
+    grid-area: 3 / 3 / 4 / 4;
+    background-color: #4B5A6C;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding-top: 20px;
+
+}
+
+.clientButton {
+    align-items: center;
+    background-color: #FF9836;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 550;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    transition: all 250ms;
+    touch-action: manipulation;
+    top: 25%;
+    width: 20%;
+}
+
+.clientButton:hover,
+.clientButton:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.clientButton:hover {
+    transform: translateY(-1px);
+}
+
+.clientButton:active {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+}
+
+input[type=number],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-sizing: border-box;
+    color: white;
+}
+
+input[type=date], input[type=password],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-sizing: border-box;
+    color: white;
+}
