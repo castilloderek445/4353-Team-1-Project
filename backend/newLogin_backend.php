@@ -1,10 +1,10 @@
 <?php  
     if (isset($_POST["submit"])){ 
-        echo "It works";
 
         $email = $_POST["email"];
         $pwd = $_POST["pwd"];
         
+        //require_once 'dbh.inc.php';
         require_once 'newLogin_fuunctions.php';
 
 
@@ -19,11 +19,17 @@
         }
 
 
-        //loginUser($conn, $username, $pwd);
+        //loginUser($conn, $email, $pwd);
     }
 
     // if user tries to get to this page thru the address bar, it'll send them to login.php
     else {
-        header("location: login.php"); 
+        header("location: ../login.php");
+        exit();
+    }
+    if(isset($_GET["error"])){
+        if($_GET["error"] == "emptyinput"){
+            echo "<p>Fill in all fields!</p>";
+        }
     }
 ?>
