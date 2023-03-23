@@ -1,12 +1,14 @@
 <?php
     include_once 'navbar.php';
+    session_start();
+    $_SESSION["loggedIn"] = false;
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>All Quotes Table</title>
+        <title>Quote History</title>
         <link rel="stylesheet" href="style.css">
         <style>
             table{
@@ -30,7 +32,7 @@
     
     <body>
     <div class="SearchBar">
-            <form method="post" action="SearchBar.php">
+            <form method="post" action="searchbar/SearchBar.php">
                 <h1> Search for: </h1>
                 <input type="text" placeholder="Enter Zipcode" name="zip">
                 <input type="text" placeholder="Enter City" name="city">

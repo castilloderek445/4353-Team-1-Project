@@ -1,5 +1,11 @@
 <?php
     include_once 'navbar.php';
+    //Relies on login a bit
+    session_start();
+    $_SESSION["admin"] = true;
+    $_SESSION["current_id"] = 0001;
+    //should always be logged in
+
 ?>
 <!DOCTYPE html>
 <html>
