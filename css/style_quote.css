@@ -41,7 +41,27 @@ body {
     justify-content: center;
 }
 
-.notiTable {
+.sub {
+    grid-area: 1 / 2 / 3 / 5;
+    background-color: #4B5A6C;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+}
+
+.notiTable  {
+    align-self: center;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 20px;
+    font-family: Arial;
+    color: white;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.notiTable2  {
     align-self: center;
     border-collapse: collapse;
     margin: 25px 0;
@@ -52,22 +72,25 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.notiTable thead tr {
+
+thead tr {
     background-color: #FF9836;
     color: #ffffff;
     text-align: left;
 }
 
-.notiTable th {
+th {
     background-color: #FF9836;
     color: #ffffff;
     padding: 12px 15px;
 }
 
-.notiTable td {
+td {
     padding: 12px 15px;
     text-align: center;
 }
+
+
 
 input[type=text],
 select {
