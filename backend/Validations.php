@@ -21,11 +21,12 @@
     //will print everything inputed
     function if_empty($given, $type){
         $default = "No Value Given";
-        if(empty($given) || $given == "sel_state"){
-            print_type($default, $type);
+        if(empty($given) || $given == "sel_state"|| $given == 0){
+            echo "<script>alert(\"No Value Given: ", $type, "\")</script>";
+            return $default;
         }
         else{
-            print_type($given, $type);
+            return $given;
         }
     }
     

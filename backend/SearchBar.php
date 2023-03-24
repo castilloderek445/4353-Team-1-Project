@@ -1,6 +1,7 @@
 <?php
     require_once('Validations.php');
     //takes a hidden input that determines the type of search
+
     $searchtype;
     if(!empty($_POST["search"])){
         $searchtype = $_POST["search"];
@@ -10,6 +11,7 @@
     }
 
     //prints the Quotes
+    //shared btw admin and user
     function print_Quotes($userid, $admin){
         $values = retrieve_data("Quote");
         if($admin == true){
@@ -38,7 +40,25 @@
             }
         }
     }
-    
+    //prints the Locations
+    //only admin
+    function print_Locations(){
+        $values = retrieve_data("Location");
+
+        for($x = 0; $x < sizeof($values); $x++){
+            echo $values[$x][0],", ",$values[$x][1],", ",$values[$x][2],", ",$values[$x][3],", ",$values[$x][4];
+            echo "<br>";
+        }
+    }
+    //prints the User list
+    //only admin
+    function print_Users(){
+        $values = retrieve_data("User");
+        for($x = 0; $x < sizeof($values); $x++){
+            echo $values[$x][0],", ",$values[$x][1],", ",$values[$x][2],", ",$values[$x][3];
+            echo "<br>";
+        }
+    }
     //work in progress
     //will take all values that were inputed
     //search for all those inputed parameters
@@ -71,14 +91,23 @@
         $location2 = array(77449,"Katy", "Texas", 2.89, 0);
         $location3 = array(77204,"Houston", "Texas", 3.01, 0);
 
+        $user1 = array(10000,"Jduarte",77004, "Texas");
+        $user2 = array(00111,"idk",77004, "Texas");
+        $user3 = array(00011,"idk",77004, "Texas");
+        $user4 = array(00001,"idk",77004, "Texas");
+
         $qvalues = array($quote1, $quote2, $quote3, $quote4);
         $lvalues = array($location1,$location2,$location3);
+        $uvalues = array($user1,$user2,$user3,$user4);
 
         if($value == "Quote"){
             return $qvalues;
         }
         if($value == "Location"){
             return $lvalues;
+        }
+        if($value == "User"){
+            return $uvalues;
         }
     }
 
@@ -92,10 +121,22 @@
         $userzip = $_POST["zipcode"];
         $userst = $_POST["state"];
 
-        if_empty($userid, "User Id");
-        if_empty($username, "Username");
-        if_empty($userzip, "User Zipcode");
-        if_empty($userst, "User State");
+        $userid = if_empty($userid, "User Id");
+        if_digit($userid, "User Id");
+        print_type($userid, "User Id");
+
+        $username = if_empty($username, "Username");
+        print_type($username, "Username");
+
+        $userzip = if_empty($userzip, "User Zipcode");
+        if_digit($userzip, "User Zipcode");
+        print_type($userzip, "User Zipcode");
+
+        $userst = if_empty($userst, "User State");
+        print_type($userst, "User State");
+
+        echo "<br>";
+        print_Users();
     }
 
     if($searchtype == "Location"){
@@ -104,40 +145,50 @@
         $price = $_POST["price"];
         $state = $_POST["state"];
 
-        if_empty($zipcode, "Zipcode");
-        if_empty($city, "City");
-        if_empty($price, "Average Price");
-        if_empty($state, "State");
-        echo "<br>";
-        $values = retrieve_data($searchtype);
+        $zipcode = if_empty($zipcode, "Zipcode");
+        if_digit($zipcode, "Zipcode");
+        print_type($zipcode, "Zipcode");
 
-        for($x = 0; $x < sizeof($values); $x++){
-            echo $values[$x][0],", ",$values[$x][1],", ",$values[$x][2],", ",$values[$x][3],", ",$values[$x][4];
-            echo "<br>";
-        }
+        $city = if_empty($city, "City");
+        print_type($city, "City");
+        $price = if_empty($price, "Average Price");
+        print_type($price, "Average Price");
+        $state = if_empty($state, "State");
+        print_type($state, "State");
+        echo "<br>";
+
+        print_Locations();
+        
     }
 
     if($searchtype == "Quote"){
         $zipcode = $_POST["zip"]; $city = $_POST["city"]; $state = $_POST["state"]; $quoteid = $_POST["quoteid"]; $date = $_POST["date"]; $totalgal = $_POST["gallons"]; $price = $_POST["price"];
-        $userid = $_POST["userid"]; $userid = $_SESSION["current_id"];
-        $default = "No Value Given";
         
+        $userid = $_POST["userid"]; $userid = $_SESSION["current_id"];
 
-        if_empty($zipcode, "Zipcode");
+        $zipcode = if_empty($zipcode, "Zipcode");
         if_digit($zipcode, "Zipcode");
+        print_type($zipcode, "Zipcode");
+        
+        $city = if_empty($city, "City");
+        print_type($city, "City");
+        $state = if_empty($state, "State");
+        print_type($state, "State");
 
-        if_empty($city, "City");
-        if_empty($state, "State");
-
-        if_empty($quoteid, "Quote Id");
+        $quoteid = if_empty($quoteid, "Quote Id");
         if_digit($quoteid, "Quote Id");
+        print_type($quoteid, "Quote Id");
 
-        if_empty($date, "Date");
-        if_empty($totalgal, "Total Gallons");
-        if_empty($price, "Average Price");
+        $date = if_empty($date, "Date");
+        print_type($date, "Date");
+        $totalgal = if_empty($totalgal, "Total Gallons");
+        print_type($totalgal, "Total Gallons");
+        $price = if_empty($price, "Average Price");
+        print_type($price, "Average Price");
 
-        echo "<br>";
+        echo "<table>";
         print_Quotes($userid, $admin);
+        echo "</table>";
     }
     
 ?>
