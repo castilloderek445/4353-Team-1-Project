@@ -18,10 +18,10 @@
             for($x = 0; $x < sizeof($values);$x++){
                 $temp = $values[$x][0];
                 echo "<tr><td>";
-                printf("%04d", $temp);
+                printf("%05d", $temp);
                 echo "</td><td>";
                 $temp = $values[$x][1];
-                printf("%04d", $temp);
+                printf("%05d", $temp);
                 echo "</td><td> ";
                 echo $values[$x][2], "</td><td>", $values[$x][3], "</td><td> ", $values[$x][4], "</td><td> ", $values[$x][5], "</td><td> ", $values[$x][6], "</td><td> ", $values[$x][7];
                 echo "</td></tr>";
@@ -32,7 +32,7 @@
                 if($userid == $values[$x][1]){
                     $temp = $values[$x][0];
                     echo "<tr><td>";
-                    printf("%04d", $temp);
+                    printf("%05d", $temp);
                     echo "</td><td>";
                     echo $values[$x][2], "</td><td>", $values[$x][3], "</td><td>", $values[$x][4], "</td><td>", $values[$x][5], "</td><td>", $values[$x][6], "</td><td> ", $values[$x][7];
                     echo "</td> </tr>";
@@ -46,8 +46,12 @@
         $values = retrieve_data("Location");
 
         for($x = 0; $x < sizeof($values); $x++){
-            echo $values[$x][0],", ",$values[$x][1],", ",$values[$x][2],", ",$values[$x][3],", ",$values[$x][4];
-            echo "<br>";
+            $temp = $values[$x][0];
+            echo "<tr><td>";
+            printf("%05d", $temp);
+            echo "</td><td>";
+            echo $values[$x][1],"</td><td>",$values[$x][2],"</td><td>",$values[$x][3],"</td><td>",$values[$x][4];
+            echo "</td></tr>";
         }
     }
     //prints the User list
@@ -55,10 +59,14 @@
     function print_Users(){
         $values = retrieve_data("User");
         for($x = 0; $x < sizeof($values); $x++){
-            echo $values[$x][0],", ",$values[$x][1],", ",$values[$x][2],", ",$values[$x][3];
-            echo "<br>";
+            $temp = $values[$x][0];
+            echo "<tr><td>";
+            printf("%05d", $temp);
+            echo "</td><td>", $values[$x][1],"</td><td>",$values[$x][2],"</td><td>",$values[$x][3];
+            echo "</td></tr>";
         }
     }
+
     //work in progress
     //will take all values that were inputed
     //search for all those inputed parameters
@@ -92,9 +100,9 @@
         $location3 = array(77204,"Houston", "Texas", 3.01, 0);
 
         $user1 = array(10000,"Jduarte",77004, "Texas");
-        $user2 = array(00111,"idk",77004, "Texas");
-        $user3 = array(00011,"idk",77004, "Texas");
-        $user4 = array(00001,"idk",77004, "Texas");
+        $user2 = array(00121,"idk",77004, "Texas");
+        $user3 = array(00041,"idk",77004, "Texas");
+        $user4 = array(00301,"idk",77004, "Texas");
 
         $qvalues = array($quote1, $quote2, $quote3, $quote4);
         $lvalues = array($location1,$location2,$location3);
@@ -135,8 +143,9 @@
         $userst = if_empty($userst, "User State");
         print_type($userst, "User State");
 
-        echo "<br>";
+        echo "<table>";
         print_Users();
+        echo "</table>";
     }
 
     if($searchtype == "Location"){
@@ -155,9 +164,11 @@
         print_type($price, "Average Price");
         $state = if_empty($state, "State");
         print_type($state, "State");
-        echo "<br>";
 
+
+        echo "<table>";
         print_Locations();
+        echo "</table>";
         
     }
 
