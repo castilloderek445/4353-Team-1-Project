@@ -138,11 +138,9 @@
                 ?>
 
             </tr>
-            <tr>
                 <?php
                     print_Quotes($_SESSION["current_id"], $admin);
                 ?>
-            </tr>
         </table>
     </body>
 </html>

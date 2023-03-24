@@ -110,13 +110,10 @@
                 <th>Address</th>
                 <th>Zip Code</th>
             </tr>
-            <tr>
-                <td>0000</td>
-                <td>Jduarte</td>
-                <td>0</td>
-                <td>4401 Cougar Village dr.</td>
-                <td>77004</td>
-            </tr>
+            <?php
+                print_Users();
+            ?>
+            
         </table>
     </body>
 </html>

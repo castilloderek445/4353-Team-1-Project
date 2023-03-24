@@ -107,13 +107,9 @@
                 <th>Average Price</th>
                 <th>Total sales</th>
             </tr>
-            <tr>
-                <td>77004</td>
-                <td>Texas</td>
-                <td>Houston</td>
-                <td>3.01</td>
-                <td>1</td>
-            </tr>
+            <?php
+                print_Locations();
+            ?>
         </table>
     </body>
 </html>
