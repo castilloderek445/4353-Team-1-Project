@@ -1,4 +1,5 @@
 <?php
+    require_once('backend/SearchBar.php');
     include_once 'navbar.php';
 ?>
 

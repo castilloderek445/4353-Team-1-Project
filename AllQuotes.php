@@ -1,11 +1,6 @@
 <?php
+    require_once('backend/SearchBar.php');
     include_once 'navbar.php';
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
-    $_SESSION["admin"] = true;
-    $admin = $_SESSION["admin"];
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +36,11 @@
                 <input type="text" placeholder="Enter Zipcode" name="zip">
                 <input type="text" placeholder="Enter City" name="city">
                 <br>
-                <input type="text" placeholder="Enter User Id" name="userid">
+                <?php 
+                    if($admin == true){
+                        echo "<input type=\"text\" placeholder=\"Enter User Id\" name=\"userid\">";
+                    }
+                ?>
                 <input type="text" placeholder="Enter Quote Id" name="quoteid">
                 <br>
                 <input type="date" name="date" value="00/00/0000">
@@ -141,7 +140,6 @@
             </tr>
             <tr>
                 <?php
-                    include_once('searchbar/SearchBar.php');
                     print_Quotes($_SESSION["current_id"], $admin);
                 ?>
             </tr>
