@@ -30,7 +30,7 @@
     
     <body>
     <div class="SearchBar">
-            <form method="post"  action="SearchBar.php">
+            <form method="post"  action="backend/SearchBar.php">
                 <h1> Search for: </h1>
                 <input type="text" placeholder="Enter Zipcode" name="zip">
                 <input type="text" placeholder="Enter City" name="city">

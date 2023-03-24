@@ -1,7 +1,11 @@
 <?php
     include_once 'navbar.php';
-    session_start();
-    $_SESSION["loggedIn"] = false;
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+    $_SESSION["admin"] = true;
+    $admin = $_SESSION["admin"];
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +36,7 @@
     
     <body>
     <div class="SearchBar">
-            <form method="post" action="searchbar/SearchBar.php">
+            <form method="post" action="backend/SearchBar.php">
                 <h1> Search for: </h1>
                 <input type="text" placeholder="Enter Zipcode" name="zip">
                 <input type="text" placeholder="Enter City" name="city">
@@ -112,24 +116,34 @@
     <h1>Requested Quotes</h1>
         <table>
             <tr>
-                <th>Zipcode</th>
-                <th>City</th>
-                <th>State</th>
-                <th>User Id</th>
-                <th>Quote Id</th>
-                <th>Date</th>
-                <th>Total Gallons</th>
-                <th>Estimated Price</th>
+                <?php
+                    if($admin == true){
+                      echo "<th>Quote Id</th>";
+                      echo "<th>User Id</th>";  
+                      echo "<th>Zipcode</th>";
+                      echo "<th>City</th>";
+                      echo "<th>State</th>";
+                      echo "<th>Date</th>";
+                      echo "<th>Total gallons</th>";
+                      echo "<th>Estimated price</th>";
+                    }
+                    else{
+                        echo "<th>Quote Id</th>";
+                        echo "<th>Zipcode</th>";
+                        echo "<th>City</th>";
+                        echo "<th>State</th>";
+                        echo "<th>Date</th>";
+                        echo "<th>Total gallons</th>";
+                        echo "<th>Estimated price</th>";  
+                    }
+                ?>
+
             </tr>
             <tr>
-                <td>77004</td>
-                <td>Houston</td>
-                <td>TX</td>
-                <td>0000</td>
-                <td>0001</td>
-                <td>2/23/2023</td>
-                <td>10</td>
-                <td>30.1</td>
+                <?php
+                    include_once('searchbar/SearchBar.php');
+                    print_Quotes($_SESSION["current_id"], $admin);
+                ?>
             </tr>
         </table>
     </body>
