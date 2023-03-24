@@ -1,4 +1,6 @@
 <?php   
+
+namespace App;
     // user can only access this newClient_backend.php if they go thru the NewClient.php
     // so can only access the following if statement, if the user pressed the submit button
     if (isset($_POST["submit"])){ 
@@ -11,7 +13,7 @@
         $pwd = $_POST["pwd"];
         $pwdRepeat = $_POST["pwdRepeat"];
         
-        //require_once 'databasestuff.php';
+        //require_once 'connect.php'; //connect to file that connects to db
         require_once 'newClient_functions.php';
 
         // a bunch of input validation
@@ -41,8 +43,13 @@
             exit();
         }
 
+        if(uidExists($con, $name, $email) !== false){
+            header("location: ../NewClient.php?error=usernametaken");
+            exit();
+        }
+
         // create user that'll be added to the db 
-        //createNewClient($conn, $name, $email, $username, $pwd);
+        createNewClient($con, $email, $name, $state, $zip, $pwd);
     }
 
     // if user tries to get to this page thru the address bar, it'll send them to NewClient.php
