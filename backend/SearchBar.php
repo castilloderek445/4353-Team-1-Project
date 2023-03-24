@@ -1,10 +1,5 @@
 <?php
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
-    $admin = $_SESSION["admin"];
-
+    require_once('Validations.php');
     //takes a hidden input that determines the type of search
     $searchtype;
     if(!empty($_POST["search"])){
@@ -12,13 +7,6 @@
     }
     else{
         $searchtype = "";
-    }
-    
-    //print usersearch
-    //might be able to change to universal print
-    function print_type($given, $type){
-        echo "<b>",$type, "</b>: ", $given;
-        echo ". ";
     }
 
     //prints the Quotes
@@ -48,18 +36,6 @@
                     echo "</td> </tr>";
                 }
             }
-        }
-    }
-
-    //this should be able to take all inputs
-    //checks if empty
-    function if_empty($given, $type){
-        $default = "No Value Given";
-        if(empty($given) || $given == "sel_state"){
-            print_type($default, $type);
-        }
-        else{
-            print_type($given, $type);
         }
     }
     
@@ -142,20 +118,20 @@
     }
 
     if($searchtype == "Quote"){
-        $zipcode = $_POST["zip"];
-        $city = $_POST["city"];
-        $state = $_POST["state"];
-        $userid = $_POST["userid"];
-        $userid = $_SESSION["current_id"];
-        $quoteid = $_POST["quoteid"];
-        $date = $_POST["date"];
-        $totalgal = $_POST["gallons"];
-        $price = $_POST["price"];
+        $zipcode = $_POST["zip"]; $city = $_POST["city"]; $state = $_POST["state"]; $quoteid = $_POST["quoteid"]; $date = $_POST["date"]; $totalgal = $_POST["gallons"]; $price = $_POST["price"];
+        $userid = $_POST["userid"]; $userid = $_SESSION["current_id"];
+        $default = "No Value Given";
+        
 
         if_empty($zipcode, "Zipcode");
+        if_digit($zipcode, "Zipcode");
+
         if_empty($city, "City");
         if_empty($state, "State");
+
         if_empty($quoteid, "Quote Id");
+        if_digit($quoteid, "Quote Id");
+
         if_empty($date, "Date");
         if_empty($totalgal, "Total Gallons");
         if_empty($price, "Average Price");
