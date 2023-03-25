@@ -1,5 +1,81 @@
 <?php
-include_once 'navbar.php';
+include_once '../navbar.php';
+include '../connect.php';
+
+// //Set placeholders based on current user id
+// $id = $_GET['userid'];
+// $sql = "Select * from user where User_id = $id";
+// $result = mysqli_query($con, $sql);
+// $row = mysqli_fetch_assoc($result);
+// $clientUsername = $row['Username'];
+// $clientStreet = $row['Street'];
+// $clientCity = $row['City'];
+// $clientState = $row['State'];
+// $clientZip = $row['Zip'];
+
+// //Record User input and Error handles
+// if (isset($_REQUEST['submit'])) {
+//     $clientUsername = $_REQUEST['username'];
+//     $clientStreet = $_REQUEST['street'];
+//     $clientCity = $_REQUEST['city'];
+//     $clientState = $_REQUEST['state'];
+//     $clientZip = $_REQUEST['zip'];
+
+//     if (empty($clientUsername)) {
+//         $errorMsg[0] = 'Username required';
+//     }
+
+//     if (empty($clientStreet)) {
+//         $errorMsg[1] = 'Street required';
+//     }
+
+//     if (strlen($sclientStreet)) {
+//         $errorMsg[4] = 'Invalid street';
+//     }
+
+//     if (empty($clientCity)) {
+//         $errorMsg[2] = 'City required';
+//     }
+
+//     if((strlen($clientCity) > 40) || preg_match('~[0-9]+~', $clientCity)) {
+//     $errorMsg[5] = 'Invalid city';
+//     }
+
+//     if (empty($clientZip)) {
+//         $errorMsg[3] = 'Zip code required';
+//     }
+//     if(!preg_match("#[0-9]{5}#", $clientZip)) {
+//         $errorMsg[6] = 'Invalid zip code';
+//     }
+
+//     //Prepared SQL Statements for Error Handles and Update
+//     if (empty($errorMsg)) {
+//         $sql = "SELECT * FROM user WHERE username=? AND User_id!=$id";
+//         $stmt = mysqli_stmt_init($con);
+//         if (!mysqli_stmt_prepare($stmt, $sql)) {
+//             echo "SQL statement failed";
+//         } else {
+//             mysqli_stmt_bind_param($stmt, "s", $clientUsername);
+//             mysqli_stmt_execute($stmt);
+//             $result2 = mysqli_stmt_get_result($stmt);
+//             if (mysqli_num_rows($result2) > 0) {
+//                 $errorMsg[5] = 'Username Already Taken';
+//             }
+//         }
+
+//         if (empty($errorMsg)) {
+//             $sql = "UPDATE user SET User_id=$id,clientUsername=?,clientStreet=?,clientCity=?,clientState=?,clientZip=? WHERE User_id=$id";
+//             $stmt = mysqli_stmt_init($con);
+//             if (!mysqli_stmt_prepare($stmt, $sql)) {
+//                 echo "SQL statement failed";
+//             } else {
+//                 mysqli_stmt_bind_param($stmt, "sssssdss", $clientUsername, $clientStreet, $clientCity, $clientState, $clientZip);
+//                 mysqli_stmt_execute($stmt);
+//                 header("location: ../client?clientProfile");
+//             }
+//         }
+//     }
+// }
 ?>
 
 <!DOCTYPE html>
@@ -138,95 +214,126 @@ include_once 'navbar.php';
 <head>
     <meta charset="utf-8">
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body class="clientBody">
-    <div class="wrapper">
-        <div class="clientMain">
-            <table class="notiTable">
-                <tr>
-                    <th><label for="name">Name: </label></th>
-                    <td><input type="text" id="name" placeholder="New name..." /></td>
+    <form method="post">
+        <div class="wrapper">
+            <div class="clientMain">
+                <table class="notiTable">
+                    <tr>
+                        <th><label for="name">Username: </label></th>
+                        <?php
+                        //if (isset($errorMsg[0])) {
+                        //    echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[0] . "</p>";
+                        //}
+                        ?>
+                        <td><input type="text" id="name" placeholder="New name..." /></td> <!--value="<?php echo $clientUsername; ?>-->
                 </tr>
                 <tr>
-                    <th><label for="name">Street: </label></th>
-                    <td><input type="text" id="street" placeholder="New street..." /></td>
+                    <th><label for=" name">Street: </label></th>
+                            <?php
+                            //if (isset($errorMsg[1])) {
+                            //    echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[1] . "</p>";
+                            //}
+                            //if (isset($errorMsg[4])) {
+                            //    echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[4] . "</p>";
+                            //}
+                            ?>
+                        <td><input type="text" id="street" placeholder="New street..." /></td> <!--value="<?php echo $clientStreet; ?>-->
                 </tr>
                 <tr>
-                    <th><label for="name">City: </label></th>
-                    <td><input type="text" id="city" placeholder="New city..." /></td>
+                    <th><label for=" name">City: </label></th>
+                            <?php
+                            // if (isset($errorMsg[2])) {
+                            //     echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[2] . "</p>";
+                            //}
+                            //if (isset($errorMsg[5])) {
+                            //    echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[5] . "</p>";
+                            //}
+                            ?>
+                        <td><input type="text" id="city" placeholder="New city..." /></td> <!--value="<?php echo $clientCity; ?>-->
                 </tr>
                 <tr>
-                    <th><label for="name">State: </label></th>
-                    <td>
-                        <select name="state"> State:
-                            <option value="sel_state" selected>Select State</option>
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="CA">California</option>
-                            <option value="CO">Colorado</option>
-                            <option value="CT">Connecticut</option>
-                            <option value="DE">Delaware</option>
-                            <option value="DC">District Of Columbia</option>
-                            <option value="FL">Florida</option>
-                            <option value="GA">Georgia</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="ID">Idaho</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IN">Indiana</option>
-                            <option value="IA">Iowa</option>
-                            <option value="KS">Kansas</option>
-                            <option value="KY">Kentucky</option>
-                            <option value="LA">Louisiana</option>
-                            <option value="ME">Maine</option>
-                            <option value="MD">Maryland</option>
-                            <option value="MA">Massachusetts</option>
-                            <option value="MI">Michigan</option>
-                            <option value="MN">Minnesota</option>
-                            <option value="MS">Mississippi</option>
-                            <option value="MO">Missouri</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NV">Nevada</option>
-                            <option value="NH">New Hampshire</option>
-                            <option value="NJ">New Jersey</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="NY">New York</option>
-                            <option value="NC">North Carolina</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="OH">Ohio</option>
-                            <option value="OK">Oklahoma</option>
-                            <option value="OR">Oregon</option>
-                            <option value="PA">Pennsylvania</option>
-                            <option value="RI">Rhode Island</option>
-                            <option value="SC">South Carolina</option>
-                            <option value="SD">South Dakota</option>
-                            <option value="TN">Tennessee</option>
-                            <option value="TX">Texas</option>
-                            <option value="UT">Utah</option>
-                            <option value="VT">Vermont</option>
-                            <option value="VA">Virginia</option>
-                            <option value="WA">Washington</option>
-                            <option value="WV">West Virginia</option>
-                            <option value="WI">Wisconsin</option>
-                            <option value="WY">Wyoming</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th><label for="name">Zip: </label></th>
-                    <td><input type="text" id="zip" placeholder="New zip..." /></td>
-                </tr>
-            </table>
+                    <th><label for=" name">State: </label></th>
+                        <td>
+                            <select name="state"> State:
+                                <option value="sel_state" selected>Select State</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="name">Zip: </label></th>
+                        <?php
+                        // if (isset($errorMsg[3])) {
+                        //     echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[3] . "</p>";
+                        // }
+                        // if (isset($errorMsg[6])) {
+                        //     echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[6] . "</p>";
+                        // }
+                        ?>
+                        <td><input type="text" id="zip" placeholder="New zip..." /></td> <!--value="<?php echo $clientZip; ?>-->
+                    </tr>
+                </table>
+            </div>
+            <div class="clientButtons">
+                <button class="clientButton" type="submit" role="button" onclick="location.href = 'clientProfile.php'">Save Changes</button>
+                <button class="clientButton" role="button" onclick="location.href = 'clientProfile.php'">Back to Profile</button>
+            </div>
         </div>
-        <div class="clientButtons">
-            <button class="clientButton" role="button" onclick="location.href = 'clientProfile.php'">Save Changes</button>
-            <button class="clientButton" role="button" onclick="location.href = 'clientProfile.php'">Back to Profile</button>
-        </div>
-    </div>
+    </form>
 </body>
 
 </html>
