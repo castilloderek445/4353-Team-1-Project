@@ -53,6 +53,10 @@ if (!empty($_SESSION['User_id'])) {
     $sign = 'Sign Up';
     $signref = $BackSlash.'signup.php';
 }
+
+$home = $BackSlash.'home.php';
+$quotes = $BackSlash.'AllQuotes.php';
+$getQuote = $BackSlash.'getQuote.php';
 ?>
 
 <!DOCTYPE html>
@@ -65,9 +69,9 @@ if (!empty($_SESSION['User_id'])) {
     <nav>
         <ul>
             <li><a>COSC 4353 Team 1 Project</a></li> 
-            <li><a href="./home.php">Home</a></li> 
-            <li><a href="./AllQuotes.php">Quote History</a></li>
-            <li><a href="./getQuote.php">Get Quote</a></li>
+            <li><a href='<?php echo $home; ?>'>Home</a></li> 
+            <li><a href='<?php echo $quotes; ?>'>Quote History</a></li>
+            <li><a href='<?php echo $getQuote; ?>'>Get Quote</a></li>
             <li><a href='<?php echo $signref; ?>'><?php echo $sign; ?></a></li> 
             <li><a href='<?php echo $logref; ?>'><?php echo $log; ?></a></li> 
             <!--When signed in, Sign Up and Login change to Profile and Logout-->
