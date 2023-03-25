@@ -1,12 +1,14 @@
 <?php
-include_once 'navbar.php';
+include_once '../navbar.php';
+include '../connect.php';
 ?>
 
 <!DOCTYPE html>
 <style>
+    
     .clientBody {
-        background: url('image02.jpg') no-repeat center fixed;
-    }
+    background: url('image02.jpg') no-repeat center fixed;  
+}
 
     .wrapper {
         display: grid;
@@ -111,7 +113,7 @@ include_once 'navbar.php';
 <head>
     <meta charset="utf-8">
     <title>Client Notifications</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body class="clientBody">
