@@ -1,6 +1,5 @@
 <?php
 include_once '../navbar.php';
-include '../connect.php';
 ?>
 
 <!DOCTYPE html>

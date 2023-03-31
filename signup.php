@@ -1,18 +1,12 @@
 <?php
-include_once 'navbar.php';
-
-$UID;
-
-if(!empty($_SESSION['User_Status'])) {
-    $UID = $_SESSION['User_id'];
-}
+    include_once 'navbar.php';
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Home</title>
+        <title>Sign Up</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>

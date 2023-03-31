@@ -13,11 +13,11 @@ if ($BackSlashCount == 4) {
     $BackSlash = '../../';
 }
 
-if (empty($_SESSION['User_id'])) {
-    $_SESSION['User_Status'] = '';
+if (empty($_SESSION['userid'])) {
+    $_SESSION['userstatus'] = '';
 }
 
-if ($_SESSION['User_Status'] != 'admin' && substr_count($_SERVER['REQUEST_URI'], "admin") > 0) {
+if ($_SESSION['userstatus'] != 'admin' && substr_count($_SERVER['REQUEST_URI'], "admin") > 0) {
     if ($BackSlashCount == 3) {
         header('location: ../home');
         die;
@@ -28,19 +28,20 @@ if ($_SESSION['User_Status'] != 'admin' && substr_count($_SERVER['REQUEST_URI'],
     }
 }
 
-if (!empty($_SESSION['User_id'])) {
+if (!empty($_SESSION['userid'])) {
     //If user is logged in, the option to log out will display
     $log = 'Log Out';
-    $logref = $BackSlash.'logout.php';
+    $logref = $BackSlash.'backend/logout_backend.php';
+    echo $_SESSION['userid'];
 } else {
     //If user is not logged in, the option to log in will display
     $log = 'Log In';
     $logref = $BackSlash.'login.php';
 }
 
-if (!empty($_SESSION['User_id'])) {
+if (!empty($_SESSION['userid'])) {
     //If the user is an admin, the option to access adminPage will display
-    if ($_SESSION['User_Status'] == 'admin') {
+    if ($_SESSION['userstatus'] == 'admin') {
         $sign = 'Admin Profile';
         $signref = $BackSlash.'admin/adminPage.php';
     } else {
@@ -51,7 +52,7 @@ if (!empty($_SESSION['User_id'])) {
 } else {
     //If the user is not logged in, the option to sign up will display
     $sign = 'Sign Up';
-    $signref = $BackSlash.'signup.php';
+    $signref = $BackSlash.'NewClient.php';
 }
 
 $home = $BackSlash.'home.php';
