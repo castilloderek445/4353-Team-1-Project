@@ -1,5 +1,4 @@
 <?php
-
     // if any of the fields are empty, throw error
     function emptySignupInput($gals, $street, $city, $state, $zip, $delDate){
         $flag; //idk why unset variables shows red squiggly line but it works
@@ -18,6 +17,10 @@
     //max value FROM THE ARROWS IN THE TEXT BOX is 20000, but user can still enter a larger value, accounted for in this function
     function invalidGalsReq($gals){
         $flag;
+        if(filter_var($gals, FILTER_VALIDATE_INT) == false){
+            $flag = true;
+            return $flag;
+        }
         if($gals > 20000){
             $flag = true;
         }

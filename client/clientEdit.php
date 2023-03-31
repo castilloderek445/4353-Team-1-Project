@@ -1,9 +1,8 @@
 <?php
 include_once '../navbar.php';
-include '../connect.php';
 
 // //Set placeholders based on current user id
-// $id = $_GET['userid'];
+// $id = $_GET['User_id'];
 // $sql = "Select * from user where User_id = $id";
 // $result = mysqli_query($con, $sql);
 // $row = mysqli_fetch_assoc($result);
@@ -15,11 +14,11 @@ include '../connect.php';
 
 // //Record User input and Error handles
 // if (isset($_REQUEST['submit'])) {
-//     $clientUsername = $_REQUEST['username'];
-//     $clientStreet = $_REQUEST['street'];
-//     $clientCity = $_REQUEST['city'];
-//     $clientState = $_REQUEST['state'];
-//     $clientZip = $_REQUEST['zip'];
+//     $clientUsername = $_REQUEST['Username'];
+//     $clientStreet = $_REQUEST['Street'];
+//     $clientCity = $_REQUEST['City'];
+//     $clientState = $_REQUEST['State'];
+//     $clientZip = $_REQUEST['Zip'];
 
 //     if (empty($clientUsername)) {
 //         $errorMsg[0] = 'Username required';

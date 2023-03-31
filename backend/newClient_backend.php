@@ -1,6 +1,6 @@
 <?php   
-
 namespace App;
+    include_once '../navbar.php';
     // user can only access this newClient_backend.php if they go thru the NewClient.php
     // so can only access the following if statement, if the user pressed the submit button
     if (isset($_POST["submit"])){ 
@@ -14,7 +14,7 @@ namespace App;
         $pwdRepeat = $_POST["pwdRepeat"];
         
         //require_once 'connect.php'; //connect to file that connects to db
-        require_once 'newClient_functions.php';
+        require_once 'client_functions.php';
 
         // a bunch of input validation
 
