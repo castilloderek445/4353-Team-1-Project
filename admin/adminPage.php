@@ -1,5 +1,5 @@
 <?php
-    include_once 'navbar.php';
+    include_once '../navbar.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <title>Admin Dashboard
         </title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../style.css">
         <style>
             .SideBar{
                 height:500px;

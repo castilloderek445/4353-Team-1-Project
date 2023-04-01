@@ -65,22 +65,27 @@ class pricingModule{
 
         $answer = $suggPrice . " " . $quote . " " . $blob . " " . gettype($gals) . " " . $delDate;
 
+        $_SESSION['newestSuggPrice'] = $suggPrice;
+        $_SESSION['newestQuote'] = $quote;
 
+        //if signed in, insert into db
+        if(isset($_SESSION["userid"])){
+            $sql2 = "INSERT INTO Fuel_Quotes (userID, galRequested, dateRequested, street, city, state, zipcode, suggestedPrice, fuelQuote) VALUES (?,?,?,?,?,?,?,?,?)";
+            $stmt2 = mysqli_stmt_init($con);
+            if(!mysqli_stmt_prepare($stmt2, $sql2)){ //checks if this fails
+                header("location: ../NewClient.php?error=stmtfailed");
+                exit();
+            }
 
-        //insert results into db
-        $sql2 = "INSERT INTO Fuel_Quotes (userID, galRequested, dateRequested, street, city, state, zipcode, suggestedPrice, fuelQuote) VALUES (?,?,?,?,?,?,?,?,?)";
-        $stmt2 = mysqli_stmt_init($con);
-        if(!mysqli_stmt_prepare($stmt2, $sql2)){ //checks if this fails
-            header("location: ../NewClient.php?error=stmtfailed");
-            exit();
+            mysqli_stmt_bind_param($stmt2, "iisssssdd", $_SESSION["userid"], $gals, $delDate, $street, $city, $state, $zip, $suggPrice, $quote);
+            mysqli_stmt_execute($stmt2);
+            mysqli_stmt_close($stmt);
+
+            return $answer;
         }
-
-        mysqli_stmt_bind_param($stmt2, "iisssssdd", $_SESSION["userid"], $gals, $delDate, $street, $city, $state, $zip, $suggPrice, $quote);
-        mysqli_stmt_execute($stmt2);
-        mysqli_stmt_close($stmt);
-
-        return $answer;
-        //return $quote;
+        else{
+            return $answer;
+        }
 
     }
 }

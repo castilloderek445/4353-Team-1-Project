@@ -1,7 +1,5 @@
 <?php
     include_once 'navbar.php';
-
-    echo $_SESSION['userid'];
 ?>
 <!DOCTYPE html>
 
@@ -115,23 +113,6 @@
         </div>
         </form>
 
-        <div class="sub">
-            <table class="notiTable2">
-                    <tr>
-                        <th><label for="suggested_price">Suggested Price:</label></th>
-                        <td>
-                            <!-- EDIT: this is supposed to be a noneditable price per gallon, just put in a number -->
-                            <input type="text" name="suggPrice" placeholder="(suggested price from pricing module)" class ="getQuote_text_input" readonly="")>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <!-- echo the price here i think -->
-                        <th><label for="amount_due">Amount Due:</label></th>
-                        <td><input type="text" name="amtDue" placeholder="(gallons*suggested_price)" class ="getQuote_text_input" readonly="")></td>
-                    </tr>
-            </table>
-        </div>
 
 
 </html>
