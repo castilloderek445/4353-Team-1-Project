@@ -8,7 +8,7 @@ use function App\pwdMatch;
 use function App\emptyLoginInput;
 
 
-class loginSigninTest extends \PHPUnit\Framework\TestCase {
+class loginSignupTest extends \PHPUnit\Framework\TestCase {
 
     //the include_once call for unknown reasons I can't solve doesn't properly invoke on the first function
     //so this using dummy function to call it once 
