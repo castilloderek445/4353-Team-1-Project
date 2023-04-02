@@ -1,0 +1,233 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-color: #4B5A6C;
+}
+
+nav {
+  width: 100%;
+  height: 75px;
+  background-color: #FF9836;
+}
+
+/*******************************************************************************/
+/* getQuote.html styling hopefully it doesn't interfere with anything else lol */
+/*******************************************************************************/
+
+/* move around entire nav inside website */
+ul {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr repeat(5,auto) 1fr;
+  grid-column-gap: 5px;
+  justify-items: center;
+}
+
+/* move around individual links inside unordered list */
+ul li {
+  list-style: none;
+  margin: 0px;
+  line-height: 75px;
+  padding: 0px 5px;
+
+  /* center line height w/ navbar by matching height */
+
+}
+
+ul li:nth-child(1) { 
+  margin-right: auto; 
+  padding: 0px 0px 0px 20px;
+
+
+}
+
+
+/* style text of links */
+ul li a {
+  text-decoration: none;
+  font-size: 14px;
+  font-family: arial;
+  color: #ffffff;
+  padding: 0 20px;
+}
+
+ul li:nth-child(2):hover, ul li:nth-child(3):hover, ul li:nth-child(4):hover, ul li:nth-child(5):hover, ul li:nth-child(6):hover {
+  background-color: #dc812c;
+}
+
+.getQuote_content {
+  padding: 0 0 0 10px;
+}
+
+h1 {
+  padding-top: 25px;
+}
+
+h2 {
+  padding-top: 10px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.Gals {
+  display: block;
+  text-align: left;
+  padding-top: 35px;
+  padding-bottom: 5px;
+}
+
+.Gals form input {
+  height: 30px;
+  width: 100px;
+}
+
+form {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.Address {
+  display: block;
+  text-align: left;
+  padding: 5px 0;
+}
+
+.Address form input {
+  height: 30px;
+}
+
+.form-control_street {
+  width: 350px;
+}
+.form-control_city {
+  width: 200px;
+}
+
+.form-control_zip {
+  width: 160px;
+}
+
+.Address form select {
+  height: 30px;
+  width: 100px;
+}
+
+.date form input {
+  height: 30px;
+  width: 100px;
+}
+
+.date {
+  display: block;
+  text-align: left;
+  padding: 5px 0;
+}
+
+.prices {
+  display: block;
+  text-align: left;
+  padding: 5px 0;
+}
+
+.prices input {
+  height: 30px;
+  width: 200px;
+}
+
+.getQuoteButton button {
+  text-align: center;
+  padding: 5px 0;
+  height: 30px;
+  width: 70px;
+}
+
+/*******************************************************************************/
+/* login.html styling
+/*******************************************************************************/
+.login {
+  padding: 0 0 0 10px;
+}
+
+.login_content {
+  padding: 0 0 0 10px;
+}
+
+.enter_email {
+  padding-top: 25px;
+  padding-bottom: 5px;
+}
+
+.enter_pw {
+  padding: 5px 0;
+}
+
+.LoginButton {
+  padding: 5px 0;
+}
+
+.LoginButton button {
+  text-align: center;
+  padding: 5px 0;
+  height: 30px;
+  width: 70px;
+}
+
+.login input {
+  width: 350px;
+  height: 30px;
+}
+
+/*******************************************************************************/
+/* signup.html styling
+/*******************************************************************************/
+.NewClient {
+  padding: 0 0 0 10px;
+}
+
+.NewClient input {
+  width: 350px;
+  height: 30px;
+}
+
+.email_container {
+  padding-top: 35px;
+  padding-bottom: 5px;
+}
+
+.company_container {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.addr_container {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.addr_container select {
+  height: 30px;
+  width: 100px;
+}
+
+.psw_container {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.clearfix {
+  padding: 5px 0;
+}
+
+.clearfix button {
+  text-align: center;
+  padding: 5px 0;
+  height: 30px;
+  width: 70px;
+}

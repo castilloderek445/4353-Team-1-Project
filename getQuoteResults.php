@@ -11,7 +11,7 @@
     <head>
         <meta charset="utf-8">
         <title>Get Quote part 2</title>
-        <link rel="stylesheet" href="css/style_quote.css">
+        <link rel="stylesheet" href="css/style_quoteResults.css">
     </head>
     <div class="clientMain">
         <div class="sub">
@@ -34,6 +34,15 @@
                     readonly=""></td>
                 </tr>
             </table>
+
+            <div class="clientButtons"> 
+                <form action="backend/saveQuote.php "  method=post>
+                        <button class="clientButton" type="submit" name="submit" role="button" >Save Quote</button>
+                </form>
+                <button class="clientButton" onClick="location.href = 'getQuote.php';">Cancel</button>
+
+            </div>
+
         </div>
     </div>
 </html>
