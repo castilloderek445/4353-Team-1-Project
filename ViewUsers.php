@@ -1,4 +1,5 @@
 <?php
+    require_once('backend/AdminBackend.php');
     include_once 'navbar.php';
 ?>
 
@@ -9,37 +10,65 @@
         <title>View Registered Users</title>
         <link rel="stylesheet" href="style.css">
         <style>
-            table{
-                border-collapse:collapse;
-                margin-left:40px;
+            .title {
+                padding-top: 10px;
+                text-align: center;
+                color: black;
+                font-size: 32pt;
             }
 
-            td, th{
-                text-align:left;
-                padding:8px;
+            .SearchBar{
+                align-self: center;
+                border-collapse: collapse;
+                margin: 25px 0;
+                font-size: 15px;
+                color: black;
+                min-width: 400px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+                background-color: orange;
             }
-            tr:nth-child{
-                background-color:#f2f2f2;
+
+            body {
+                background: url('image02.jpg') no-repeat center fixed;  
             }
-            th{
-                background-color:#4B5A6C;
-                color: white;
+
+            input[type=text],
+            select {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                background: transparent;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: .25rem;
+                box-sizing: border-box;
+                color: black;
             }
+            
+            table, th, td {
+                border: 1px solid;
+                background-color: lightgoldenrodyellow;
+            }
+                
         </style>
+
+        <div>
+            <p class="title"><span><b>View Registered Users</b></span></p>
+        </div>
     </head>
     
     <body>
         <div class="SearchBar">
-            <form name ="SearchParams">
+            <form method="post" action="backend/AdminBackend.php">
                 <h1> Search for: </h1>
-                <label for="SearchParams"> Must fill at least one for search: </label>
-                <hr>
                 <input type="text" placeholder="Enter User ID" name="id">
+                <input type="text" placeholder="Enter Username" name="username">
                 <br>
-                <input type="text" placeholder="Enter Username" name="name">
+                <input type="text" placeholder="Enter Company" name="company">
+                <input type="text" placeholder="Enter Email" name="email">
                 <br>
-                <input type="text" placeholder="Enter Zipcode" name="zipcode">
-                <br>
+                <input type="text" placeholder="Enter Street" name="street">
+                <input type="text" placeholder="Enter City" name="city">
                 <select name="state"> State: 
                     <option value="sel_state" selected>Select State</option>
                     <option value="AL">Alabama</option>
@@ -94,7 +123,13 @@
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select>
+                <input type="text" placeholder="Enter Zipcode" name="zip">
+                <br>
+                <input type="hidden" name="search" value="user">
+                <input type="submit" value="Search:">
             </form>
+
+
         </div>
         <br>
         <h1>Registered Users</h1>
@@ -102,15 +137,17 @@
             <tr>
                 <th>User ID</th>
                 <th>Username</th>
-                <th>Total Purchases</th>
-                <th>Zip Code</th>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zipcode</th>
+                <th>Date of Registration</th>
             </tr>
-            <tr>
-                <td>0000</td>
-                <td>Jduarte</td>
-                <td>0</td>
-                <td>77004</td>
-            </tr>
+            <?php
+                print_Users("");
+            ?>
         </table>
     </body>
 </html>
