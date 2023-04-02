@@ -1,6 +1,10 @@
 <?php
-    require_once('backend/AdminBackend.php');
-    include_once 'navbar.php';
+    include 'backend/AdminBackend.php';
+    include 'navbar.php';
+
+    //creates connection
+    //sql statement is used to select all users
+    $connection = mysqli_connect("team1db.cbublt8spaue.us-east-2.rds.amazonaws.com","team1master","\$123Fuelquote456", "sys");
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +35,7 @@
     
     <body>
     <div class="SearchBar">
-            <form method="post" action="backend/AdminBackend.php">
+            <form method="post" action="AllQuotes.php">
                 <h1> Search for: </h1>
                 <input type="text" placeholder="Enter Quote Id" name="quoteid">
                 <?php 
@@ -102,7 +106,7 @@
                 </select>
                 <input type="text" placeholder="Enter Zipcode" name="zip">
                 <br>
-                <input type="hidden" name="search" value="Quote">
+                <input type="hidden" name="search" value="inputs">
                 <input type ="submit" value="Search:">
             </form>
             <br>
@@ -112,27 +116,62 @@
     <h1>Requested Quotes</h1>
         <table>
             <tr>
+                <th>Quote Id</th>
                 <?php
-                      echo "<th>Quote Id</th>";
-                      if($_SESSION['admin'] == true){
-                            echo "<th>User Id</th>";  
-                      }
-                      echo "<th>Gallons Requested</th>";
-                      echo "<th>Date of Request</th>";
-                      echo "<th>Stree</th>";
-                      echo "<th>City</th>";
-                      echo "<th>State</th>";
-                      echo "<th>Zipcode</th>";
-                      echo "<th>Suggested Price</th>";
-                      echo "<th>Final Quote</th>";
-
-
+                if($_SESSION['admin'] == true){
+                    echo "<th>User Id</th>";  
+                }
                 ?>
+                <th>Gallons Requested</th>
+                <th>Date of Request</th>
+                <th>Stree</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zipcode</th>
+                <th>Suggested Price</th>
+                <th>Final Quote</th>
 
             </tr>
-                <?php
-                    print_Quotes("");
-                ?>
+            <?php
+                if(isset($_POST['search'])){
+                    if($_POST['search']=="inputs"){
+                        $quoteid = $_POST['quoteid']; $userid = $_POST['userid']; $totalGal = $_POST["totalGal"]; 
+                        $street = $_POST['street']; $zip= $_POST["zip"]; $city = $_POST["city"]; $state = $_POST["state"]; $date = $_POST["date"];
+                        //if not numbers then sets it to "".
+                        $quoteid = if_digit($quoteid); $userid = if_digit($userid); $totalGal = if_digit($totalGal); $zip = if_zip($zip);
+                        $searchquote="";$searchid="";$searchGal="";$searchDate="";$searchStreet="";$searchCity="";$searchSt="";$searchZip ="";
+                        if(empty($quoteid)==true){ $quoteid = "No Value Given"; }else{ $searchquote  = "quoteId = $quoteid"; }
+                        if(empty($userid)==true){ $userid = "No Value Given"; }else{ $searchid  = "userId = $userid"; }
+                        if(empty($totalGal)==true){ $totalGal = "No Value Given"; }else{ $searchGal  = "galRequested = $totalGal"; }
+                        if(empty($date)==true){ $date = "No Value Given"; }else{ $searchDate  = "dateRequested = $date"; }                        
+                        if(empty($street)==true){ $street = "No Value Given"; }else{ $searchStreet  = "Street = '$street'"; }
+                        if(empty($city)==true){ $city = "No Value Given"; }else{ $searchCity  = "City = '$city'"; }
+                        if($state == 'sel_state'){ $state = "No Value Given"; }else{ $searchSt  = "State = '$state'"; }
+                        if(empty($zip)==true){ $zip = "No Value Given"; }else{ $searchZip = "Zipcode = '$zip'"; }
+                        
+                        $sqlWHEREs = array( $searchquote,$searchid,$searchGal,$searchDate,$searchStreet,$searchCity,$searchSt,$searchZip);
+                        $sqlWHEREs = combine_stmts($sqlWHEREs);
+                        $sqlstmt = "SELECT * FROM Fuel_Quotes $sqlWHEREs";
+                        $selectUsers = mysqli_query($connection, $sqlstmt);
+                        while($row = mysqli_fetch_array($selectUsers, MYSQLI_ASSOC)){
+                            print_Quotes($row);
+                        }
+
+                        //echo "Search Params => ['quoteid','userid','totalGal','date','street','city','state','zip'] = ['$quoteid','$userid','$totalGal','$date','$street','$city','$state','$zip']";
+                    }
+                    else{
+                        echo "<td>Please reload the page</td>";
+                    }
+                }
+                else{
+                    //from adminpage will print all
+                    $sql = "SELECT * FROM Fuel_Quotes";
+                    $selectUsers = mysqli_query($connection, $sql);
+                    while($row = mysqli_fetch_array($selectUsers, MYSQLI_ASSOC)){
+                        print_Quotes($row);
+                    }
+                }
+            ?>
         </table>
     </body>
 </html>
