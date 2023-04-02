@@ -1,4 +1,5 @@
 <?php
+    require_once('backend/AdminBackend.php');
     include_once 'navbar.php';
 ?>
 
@@ -6,7 +7,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>All Quotes Table</title>
+        <title>Quote History</title>
         <link rel="stylesheet" href="style.css">
         <style>
             table{
@@ -30,21 +31,21 @@
     
     <body>
     <div class="SearchBar">
-            <form name ="SearchParams">
+            <form method="post" action="backend/AdminBackend.php">
                 <h1> Search for: </h1>
-                <label for="SearchParams"> Must fill at least one for search: </label>
-                <hr>
-                <input type="text" placeholder="Enter Zipcode" name="zip">
+                <input type="text" placeholder="Enter Quote Id" name="quoteid">
+                <?php 
+                    if($_SESSION['admin'] == true){
+                        echo "<input type=\"text\" placeholder=\"Enter User Id\" name=\"userid\">";
+                    }
+                ?>
+                <br>
+                <label for="quantity"> Total Gallons: </label>
+                <input type="number" id="quantity" name="totalGal" min="50" max="9999">
+                <input type="date" name="date" value="00/00/0000">
+                <br>
+                <input type="text" placeholder="Enter Street" name="street">
                 <input type="text" placeholder="Enter City" name="city">
-                <br>
-                <input type="text" placeholder="Enter User Id" name="user">
-                <input type="text" placeholder="Enter Order Id" name="order">
-                <br>
-                <input type="date" name="date" value="2023-02-23">
-                <br>
-                <caption> Total Gallons: </caption>
-                <input type="range" name="gallons" min="1" max="50">
-                <br>
                 <select name="state"> State: 
                     <option value="sel_state" selected>Select State</option>
                     <option value="AL">Alabama</option>
@@ -99,30 +100,39 @@
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select>
-                <hr>
+                <input type="text" placeholder="Enter Zipcode" name="zip">
+                <br>
+                <input type="hidden" name="search" value="Quote">
+                <input type ="submit" value="Search:">
             </form>
             <br>
-            <button type="button"> Search</button>
+
     </div>
 
     <h1>Requested Quotes</h1>
         <table>
             <tr>
-                <th>Date</th>
-                <th>Order Id</th>
-                <th>Zipcode</th>
-                <th>User Id</th>
-                <th>Total Gallons</th>
-                <th>Estimated Price</th>
+                <?php
+                      echo "<th>Quote Id</th>";
+                      if($_SESSION['admin'] == true){
+                            echo "<th>User Id</th>";  
+                      }
+                      echo "<th>Gallons Requested</th>";
+                      echo "<th>Date of Request</th>";
+                      echo "<th>Stree</th>";
+                      echo "<th>City</th>";
+                      echo "<th>State</th>";
+                      echo "<th>Zipcode</th>";
+                      echo "<th>Suggested Price</th>";
+                      echo "<th>Final Quote</th>";
+
+
+                ?>
+
             </tr>
-            <tr>
-                <td>2/23/2023</td>
-                <td>0000</td>
-                <td>77004</td>
-                <td>0000</td>
-                <td>10</td>
-                <td>30.1</td>
-            </tr>
+                <?php
+                    print_Quotes("");
+                ?>
         </table>
     </body>
 </html>

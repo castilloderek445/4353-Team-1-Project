@@ -1,4 +1,5 @@
 <?php
+    require_once('backend/AdminBackend.php');
     include_once 'navbar.php';
 ?>
 
@@ -30,16 +31,16 @@
     
     <body>
         <div class="SearchBar">
-            <form name ="SearchParams">
+            <form method="post" action="backend/AdminBackend.php">
                 <h1> Search for: </h1>
-                <label for="SearchParams"> Must fill at least one for search: </label>
-                <hr>
                 <input type="text" placeholder="Enter User ID" name="id">
+                <input type="text" placeholder="Enter Username" name="username">
                 <br>
-                <input type="text" placeholder="Enter Username" name="name">
+                <input type="text" placeholder="Enter Company" name="company">
+                <input type="text" placeholder="Enter Email" name="email">
                 <br>
-                <input type="text" placeholder="Enter Zipcode" name="zipcode">
-                <br>
+                <input type="text" placeholder="Enter Street" name="street">
+                <input type="text" placeholder="Enter City" name="city">
                 <select name="state"> State: 
                     <option value="sel_state" selected>Select State</option>
                     <option value="AL">Alabama</option>
@@ -94,7 +95,13 @@
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select>
+                <input type="text" placeholder="Enter Zipcode" name="zip">
+                <br>
+                <input type="hidden" name="search" value="user">
+                <input type="submit" value="Search:">
             </form>
+
+
         </div>
         <br>
         <h1>Registered Users</h1>
@@ -102,15 +109,17 @@
             <tr>
                 <th>User ID</th>
                 <th>Username</th>
-                <th>Total Purchases</th>
-                <th>Zip Code</th>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zipcode</th>
+                <th>Date of Registration</th>
             </tr>
-            <tr>
-                <td>0000</td>
-                <td>Jduarte</td>
-                <td>0</td>
-                <td>77004</td>
-            </tr>
+            <?php
+                print_Users("");
+            ?>
         </table>
     </body>
 </html>
