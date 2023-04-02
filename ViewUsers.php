@@ -1,6 +1,11 @@
 <?php
-    require_once('backend/AdminBackend.php');
+    include 'backend/AdminBackend.php';
     include_once 'navbar.php';
+
+    //creates connection
+    //sql statement is used to select all users
+    $connection = mysqli_connect("team1db.cbublt8spaue.us-east-2.rds.amazonaws.com","team1master","\$123Fuelquote456", "sys");
+
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +36,9 @@
     
     <body>
         <div class="SearchBar">
-            <form method="post" action="backend/AdminBackend.php">
+            <form method="post" action="ViewUsers.php">
                 <h1> Search for: </h1>
-                <input type="text" placeholder="Enter User ID" name="id">
-                <input type="text" placeholder="Enter Username" name="username">
+                <input type="text" placeholder="Enter User ID" name="userid">
                 <br>
                 <input type="text" placeholder="Enter Company" name="company">
                 <input type="text" placeholder="Enter Email" name="email">
@@ -97,7 +101,7 @@
                 </select>
                 <input type="text" placeholder="Enter Zipcode" name="zip">
                 <br>
-                <input type="hidden" name="search" value="user">
+                <input type="hidden" name="search" value="inputs">
                 <input type="submit" value="Search:">
             </form>
 
@@ -116,9 +120,46 @@
                 <th>State</th>
                 <th>Zipcode</th>
                 <th>Date of Registration</th>
+                <th>Edit Client info</th>
             </tr>
             <?php
-                print_Users("");
+                if(isset($_POST['search'])){
+                    if($_POST['search']=="inputs"){
+                        $userid = $_POST['userid']; $company = $_POST['company']; $email = $_POST['email'];  $street = $_POST['street']; $zip= $_POST["zip"]; $city = $_POST["city"]; $state = $_POST["state"];
+                        //if not numbers then sets it to "".
+                        $userid = if_digit($userid); $zip = if_zip($zip);
+                        $searchid = ""; $searchname = ""; $searchcompany = ""; $searchemail = ""; $searchStreet = ""; $searchCity = ""; $searchSt = ""; $searchZip = "";
+                        if(empty($userid)==true){ $userid = "No Value Given"; }else{ $searchid  = "User_id = $userid"; }
+                        if(empty($company)==true){ $company = "No Value Given"; }else{ $searchcompany  = "Company = '$company'"; }
+                        if(empty($email)==true){ $email = "No Value Given"; }else{ $searchemail  = "Email = '$email'"; }
+                        if(empty($street)==true){ $street = "No Value Given"; }else{ $searchStreet  = "Street = '$street'"; }
+                        if(empty($city)==true){ $city = "No Value Given"; }else{ $searchCity  = "City = '$city'"; }
+                        if($state == 'sel_state'){ $state = "No Value Given"; }else{ $searchSt  = "State = '$state'"; }
+                        if(empty($zip)==true){ $zip = "No Value Given"; }else{ $searchZip = "Zipcode = '$zip'"; }
+                        $sqlWHEREs = array($searchid, $searchcompany, $searchemail, $searchStreet, $searchCity, $searchSt, $searchZip);
+                        $sqlWHEREs = combine_stmts($sqlWHEREs);
+
+                        $sqlstmt = "SELECT * FROM user $sqlWHEREs";
+                        echo $sqlstmt;
+                        $selectUsers = mysqli_query($connection, $sqlstmt);
+                        while($row = mysqli_fetch_array($selectUsers, MYSQLI_ASSOC)){
+                            print_Users($row);
+                        }
+
+                        echo "Search Params => ['userid','company','email','street','city','state','zip'] = ['$userid','$company','$email','$street','$city','$state','$zip']";
+                    }
+                    else{
+                        echo "<td>Please reload the page</td>";
+                    }
+                }
+                else{
+                    //from adminpage will print all
+                    $sql = "SELECT * FROM user";
+                    $selectUsers = mysqli_query($connection, $sql);
+                    while($row = mysqli_fetch_array($selectUsers, MYSQLI_ASSOC)){
+                        print_Users($row);
+                    }
+                }
             ?>
         </table>
     </body>
