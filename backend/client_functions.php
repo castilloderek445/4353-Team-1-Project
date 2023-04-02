@@ -28,11 +28,12 @@ include_once '../navbar.php';
         }
         return $flag;
     }
+    
 
     // if company name doesn't only contain a-z, A-Z, or numbers, throw error
     function invalidUsername($name){
         $flag;
-        if(!preg_match("/^[a-zA-Z0-9]*$/", $name)){
+        if((!preg_match("/^[a-zA-Z0-9]*$/", $name)) || strlen($name) > 40){
             $flag = true;
         }
         else{
