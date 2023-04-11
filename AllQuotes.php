@@ -39,7 +39,7 @@
                 <h1> Search for: </h1>
                 <input type="text" placeholder="Enter Quote Id" name="quoteid">
                 <?php 
-                    if($_SESSION['admin'] == true){
+                    if($_SESSION['userstatus'] == 'admin'){
                         echo "<input type=\"text\" placeholder=\"Enter User Id\" name=\"userid\">";
                     }
                 ?>
