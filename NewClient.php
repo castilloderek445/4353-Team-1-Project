@@ -121,7 +121,7 @@
 
         <div class="clientButtons">
                 <button class="clientButton" type="submit" name="submit">Sign Up</button>
-                <button class="clientButton">Cancel</button>
+                <button class="clientButton" onClick="window.location.reload();">Cancel</button>
         </div>
         </form>
 
