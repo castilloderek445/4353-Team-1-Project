@@ -64,10 +64,10 @@
     //prints the Quotes
     //shared btw admin and user
     function print_Quotes($row){
-        $userid = $row['userId'];
-        if($userid == $_SESSION['current_id'] || $_SESSION['admin'] == true){
+        if (!empty($_SESSION['userid'])) {
+            $id = $row['userId'];
             echo "<tr> <td>", $row['quoteId'], "</td>";
-            if($_SESSION['admin'] == true){
+            if( $_SESSION['userstatus'] == 'admin'){
                 echo "<td>", $row['userId'], "</td>";
             }
             echo "<td>", $row['galRequested'], "</td>";
@@ -79,10 +79,8 @@
             echo "<td>", $row['suggestedPrice'], "</td>";
             echo "<td>", $row['fuelQuote'], "</td></tr>";
         }
-        else{
-            echo "You sly dog!";
-        }
-        
+
+    
     }
     //prints the User list
     //only admin
