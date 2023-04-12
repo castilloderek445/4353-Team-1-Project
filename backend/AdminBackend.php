@@ -65,19 +65,24 @@
     //shared btw admin and user
     function print_Quotes($row){
         if (!empty($_SESSION['userid'])) {
-            $id = $row['userId'];
-            echo "<tr> <td>", $row['quoteId'], "</td>";
-            if( $_SESSION['userstatus'] == 'admin'){
-                echo "<td>", $row['userId'], "</td>";
+            //so userid isnt empty
+            if($_SESSION['userid'] == $row['userId']||$_SESSION['userstatus'] == 'admin'){
+                echo "<tr> <td>", $row['quoteId'], "</td>";
+                if( $_SESSION['userstatus'] == 'admin'){
+                    echo "<td>", $row['userId'], "</td>";
+                }
+                echo "<td>", $row['galRequested'], "</td>";
+                echo "<td>", $row['dateRequested'], "</td>";
+                echo "<td>", $row['Street'], "</td>";
+                echo "<td>", $row['City'], "</td>";
+                echo "<td>", $row['State'], "</td>";
+                echo "<td>", $row['Zipcode'], "</td>";
+                echo "<td>", $row['suggestedPrice'], "</td>";
+                echo "<td>", $row['fuelQuote'], "</td></tr>";
             }
-            echo "<td>", $row['galRequested'], "</td>";
-            echo "<td>", $row['dateRequested'], "</td>";
-            echo "<td>", $row['Street'], "</td>";
-            echo "<td>", $row['City'], "</td>";
-            echo "<td>", $row['State'], "</td>";
-            echo "<td>", $row['Zipcode'], "</td>";
-            echo "<td>", $row['suggestedPrice'], "</td>";
-            echo "<td>", $row['fuelQuote'], "</td></tr>";
+            else{
+                
+            }
         }
 
     
