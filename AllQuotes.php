@@ -118,7 +118,7 @@
             <tr>
                 <th>Quote Id</th>
                 <?php
-                if($_SESSION['admin'] == true){
+                if($_SESSION['userstatus'] == 'admin'){
                     echo "<th>User Id</th>";  
                 }
                 ?>

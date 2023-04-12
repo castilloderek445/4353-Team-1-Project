@@ -50,13 +50,13 @@
                     <a href="AdminPage.php">Main Panel</a><br>
                 </div>
                 <div class="BarButton">
-                    <a href="ViewUsers.php">Registered Users</a><br>
+                    <a href="../ViewUsers.php">Registered Users</a><br>
                 </div>
                 <div class="BarButton">
                     <a href="#">Location Info</a><br>
                 </div>
                 <div class="BarButton">
-                    <a href="#">Logistics</a><br>
+                    <a href="../AllQuotes.php">Logistics</a><br>
                 </div>
                 <div class="BarButton">
                     <a href="#">Update Profile Info</a><br>
