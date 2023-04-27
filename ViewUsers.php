@@ -16,8 +16,11 @@
         <link rel="stylesheet" href="style.css">
         <style>
             table{
+                background:grey;
                 border-collapse:collapse;
-                margin-left:40px;
+                margin-left: auto;
+                margin-right: auto;
+                width: 75%;
             }
 
             td, th{
@@ -31,6 +34,72 @@
                 background-color:#4B5A6C;
                 color: white;
             }
+            input{
+                width:25%;
+            }
+            input[type=text]:focus,input[type=number]:focus,input[type=date]:focus{
+                background-color: lightblue;
+            }
+            select{
+            	 height:40px;
+                 display: inline-block;
+                 background: transparent;
+                 border: 1px solid rgba(0, 0, 0, 0.1);
+                 border-radius: .25rem;
+                 box-sizing: border-box;
+                 color: black;
+            }
+            button{
+            	 height:40px;
+                 width:15%;
+                 display: inline-block;
+                 background: transparent;
+                 border: 1px solid rgba(0, 0, 0, 0.1);
+                 border-radius: .25rem;
+                 box-sizing: border-box;
+                 color: black;
+            }
+            input[type=text],input[type=number]{
+                 padding: 12px 20px;
+                 margin: 8px 0;
+                 display: inline-block;
+                 background: transparent;
+                 border: 1px solid rgba(0, 0, 0, 0.1);
+                 border-radius: .25rem;
+                 box-sizing: border-box;
+                 color: black;
+             }
+             input[type=date]{
+                 padding: 12px 20px;
+                 margin: 8px 0;
+                 display: inline-block;
+                 background: transparent;
+                 border: 1px solid rgba(0, 0, 0, 0.1);
+                 border-radius: .25rem;
+                 box-sizing: border-box;
+                 color: black;
+             }
+             input[type=submit]{
+            	 padding-left: 12px;
+                 padding-bottom:12px;
+                 padding-top:6px;
+                 display: inline-block;
+                 background: transparent;
+                 border: 1px solid rgba(0, 0, 0, 0.1);
+                 border-radius: .25rem;
+                 box-sizing: border-box;
+                 color: black;
+            }
+            .SearchBar{
+                 align-self: center;
+                 border-collapse: collapse;
+                 margin: 25px 0;
+                 padding-left: 10px;
+                 font-size: 15px;
+                 color: black;
+                 min-width: 400px;
+                 box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+             }
         </style>
     </head>
     
