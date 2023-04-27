@@ -15,8 +15,11 @@
         <link rel="stylesheet" href="style.css">
         <style>
             table{
+                background:grey;
                 border-collapse:collapse;
-                margin-left:40px;
+                margin-left: auto;
+                margin-right: auto;
+                width: 75%;
             }
 
             td, th{
@@ -30,26 +33,90 @@
                 background-color:#4B5A6C;
                 color: white;
             }
+            input{
+                width:25%;
+            }
+            input[type=text]:focus,input[type=number]:focus,input[type=date]:focus{
+                background-color: lightblue;
+            }
+            select{
+            	 height:40px;
+                 display: inline-block;
+                 background: transparent;
+                 border: 1px solid rgba(0, 0, 0, 0.1);
+                 border-radius: .25rem;
+                 box-sizing: border-box;
+                 color: black;
+            }
+            button{
+            	 height:40px;
+                 width:15%;
+                 display: inline-block;
+                 background: transparent;
+                 border: 1px solid rgba(0, 0, 0, 0.1);
+                 border-radius: .25rem;
+                 box-sizing: border-box;
+                 color: black;
+            }
+            input[type=text],input[type=number]{
+                 padding: 12px 20px;
+                 margin: 8px 0;
+                 display: inline-block;
+                 background: transparent;
+                 border: 1px solid rgba(0, 0, 0, 0.1);
+                 border-radius: .25rem;
+                 box-sizing: border-box;
+                 color: black;
+             }
+             input[type=date]{
+                 padding: 12px 20px;
+                 margin: 8px 0;
+                 display: inline-block;
+                 background: transparent;
+                 border: 1px solid rgba(0, 0, 0, 0.1);
+                 border-radius: .25rem;
+                 box-sizing: border-box;
+                 color: black;
+             }
+             input[type=submit]{
+            	 padding-left: 12px;
+                 padding-bottom:12px;
+                 padding-top:6px;
+                 display: inline-block;
+                 background: transparent;
+                 border: 1px solid rgba(0, 0, 0, 0.1);
+                 border-radius: .25rem;
+                 box-sizing: border-box;
+                 color: black;
+            }
+            .SearchBar{
+                 align-self: center;
+                 border-collapse: collapse;
+                 margin: 25px 0;
+                 padding-left: 10px;
+                 font-size: 15px;
+                 color: black;
+                 min-width: 400px;
+                 box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+             }
         </style>
     </head>
     
     <body>
-    <div class="SearchBar">
+        <div class="SearchBar">
             <form method="post" action="AllQuotes.php">
-                <h1> Search for: </h1>
+                <h2>Search for Quote</h2>
                 <input type="text" placeholder="Enter Quote Id" name="quoteid">
                 <?php 
                     if($_SESSION['userstatus'] == 'admin'){
                         echo "<input type=\"text\" placeholder=\"Enter User Id\" name=\"userid\">";
                     }
                 ?>
+                <input type="date" name="date" placeholder="00/00/000">
                 <br>
-                <label for="quantity"> Total Gallons: </label>
-                <input type="number" id="quantity" name="totalGal" min="50" max="9999">
-                <input type="date" name="date" value="00/00/0000">
+                <input type="text" style="width:74%;" placeholder="Enter Street" name="street">
                 <br>
-                <input type="text" placeholder="Enter Street" name="street">
-                <input type="text" placeholder="Enter City" name="city">
+                <input type="text"  placeholder="Enter City" name="city">
                 <select name="state"> State: 
                     <option value="sel_state" selected>Select State</option>
                     <option value="AL">Alabama</option>
@@ -106,14 +173,21 @@
                 </select>
                 <input type="text" placeholder="Enter Zipcode" name="zip">
                 <br>
+                <label for="quantity"> Total Gallons: </label>
+                <input type="number" id="quantity" name="totalGal" min="50" max="9999">
                 <input type="hidden" name="search" value="inputs">
-                <input type ="submit" value="Search:">
+                <button type ="submit">Search</button>
             </form>
             <br>
-
     </div>
-
-    <h1>Requested Quotes</h1>
+    <?php
+        if($_SESSION['userstatus'] == 'admin'){
+            echo "<h1>All User Quotes</h1>";  
+        }
+         else if($_SESSION['userstatus'] != 'admin'){
+            echo "<h1>Quote History</h1>";
+        }
+    ?>
         <table>
             <tr>
                 <th>Quote Id</th>
