@@ -1,7 +1,6 @@
 <?php
-    include 'Validations.php';
     //takes a hidden input that determines the type of search
-
+    //if its empty then its using another function
     $searchtype;
     if(!empty($_POST["search"])){
         $searchtype = $_POST["search"];
@@ -84,8 +83,9 @@
                 
             }
         }
-
-    
+        else{
+            return false;
+        }
     }
     //prints the User list
     //only admin
@@ -100,7 +100,7 @@
         echo "<td>", $row['Zip'], "</td>";
         echo "<td>", $row['Date_Created'], "</td>";
         $newarray = $row['User_id'];
-        echo "<td><form method='post' action='AdminEditClient.php'><input type=submit value='Edit Client Info'><input type='hidden'name='current_id' value='$newarray'></form></td></tr>";
+        echo "<td><form method='post' action='AdminEditClient.php'><button type=submit>Edit Client Info</button> <input type='hidden'name='current_id' value='$newarray'> </form></td></tr>";
     }
     
 ?>
