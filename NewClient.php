@@ -28,7 +28,7 @@
                         class="form-control"
                         id="password"
                         name="name"
-                        placeholder="Password"
+                        placeholder="Name"
                         required>
                     </td>
                 </tr>
