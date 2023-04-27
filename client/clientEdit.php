@@ -10,27 +10,21 @@ if (isset($_REQUEST["submit"])) {
     $clientState = $_POST["state"];
     $clientZip = $_POST["zip"];
 
-    if (empty($clientStreet)) {
-        $errorMsg[0] = 'Street required';
-    }
-
+    //new error message values 
+    // 0 = invalid street, 1 = invalid city, 2 = empty state, 3 = invalid zip
     if (strlen($clientStreet) > 80) {
-        $errorMsg[3] = 'Invalid street';
-    }
-
-    if (empty($clientCity)) {
-        $errorMsg[1] = 'City required';
+        $errorMsg[0] = 'Invalid street';
     }
 
     if ((strlen($clientCity) > 40) || preg_match('~[0-9]+~', $clientCity)) {
-        $errorMsg[4] = 'Invalid city';
+        $errorMsg[1] = 'Invalid city';
     }
 
-    if (empty($clientZip)) {
-        $errorMsg[2] = 'Zip code required';
+    if ($clientState === "") {
+        $errorMsg[2] = 'State required';
     }
-    if (!preg_match("#[0-9]{5}#", $clientZip)) {
-        $errorMsg[5] = 'Invalid zip code';
+    if (!preg_match('/^\d{5}$/', $clientZip)) {
+        $errorMsg[3] = 'Invalid zip code';
     }
 
     //Prepared SQL Statements for Error Handles and Update
@@ -198,31 +192,25 @@ if (isset($_REQUEST["submit"])) {
                         <th><label for="street">Street: </label></th>
                         <?php
                         if (isset($errorMsg[0])) {
-                            echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[1] . "</p>";
-                        }
-                        if (isset($errorMsg[3])) {
-                            echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[4] . "</p>";
+                            echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[0] . "</p>";
                         }
                         ?>
-                        <td><input type="text" name="street" id="street" placeholder="New street..." /></td>
+                        <td><input type="text" name="street" id="street" placeholder="New street..." required/></td>
                     </tr>
                     <tr>
                         <th><label for="city">City: </label></th>
                         <?php
                         if (isset($errorMsg[1])) {
-                            echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[2] . "</p>";
-                        }
-                        if (isset($errorMsg[4])) {
-                            echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[5] . "</p>";
+                            echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[1] . "</p>";
                         }
                         ?>
-                        <td><input type="text" name="city" id="city" placeholder="New city..." /></td>
+                        <td><input type="text" name="city" id="city" placeholder="New city..." required/></td>
                     </tr>
                     <tr>
                         <th><label for="state">State: </label></th>
                         <td>
                             <select name="state"> State:
-                                <option value="sel_state" selected>Select State</option>
+                                <option value="" selected>Select State</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -276,18 +264,20 @@ if (isset($_REQUEST["submit"])) {
                                 <option value="WY">Wyoming</option>
                             </select>
                         </td>
+                        <?php
+                        if (isset($errorMsg[2])) {
+                            echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[2] . "</p>";
+                        }
+                        ?>
                     </tr>
                     <tr>
                         <th><label for="zip">Zip: </label></th>
                         <?php
-                        if (isset($errorMsg[2])) {
+                        if (isset($errorMsg[3])) {
                             echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[3] . "</p>";
                         }
-                        if (isset($errorMsg[5])) {
-                            echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[6] . "</p>";
-                        }
                         ?>
-                        <td><input type="text" name="zip" id="zip" placeholder="New zip..." /></td>
+                        <td><input type="text" name="zip" id="zip" placeholder="New zip..." required/></td>
                     </tr>
                 </table>
             </div>
