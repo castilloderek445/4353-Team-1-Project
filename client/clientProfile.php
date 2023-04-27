@@ -137,7 +137,6 @@ $row = mysqli_fetch_assoc($result);
 
         </div>
         <div class="clientButtons">
-            <button class="clientButton" role="button" onclick="location.href = 'clientNotifications.php'">Notifications</button>
             <button class="clientButton" role="button" onclick="location.href = 'clientEdit.php'">Edit Profile</button>
         </div>
     </div>
