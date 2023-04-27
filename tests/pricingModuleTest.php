@@ -1,14 +1,16 @@
 <?php
 
-use function App\calcQuote;
+use function App\simulateCalcQuote;
 
 class pricingModuleTest extends \PHPUnit\Framework\TestCase {
-    public function testPricingModule(){
-        
-        $result = calcQuote(1500,"TX");
+    public function testModule(){
+        include_once 'backend/simulatePriceModule.php';
+        $result = simulateCalcQuote(1500,"TX");
         
         //php output needs commas and two placements after decimal
-        $this->assertEquals('2,542.50', $result);
+        $this->assertEquals('2542.50', $result);
     }  
 }
+// composer update
+// ./vendor/bin/phpunit --testdox
 ?>
