@@ -18,87 +18,87 @@
             table{
                 background:grey;
                 border-collapse:collapse;
-                margin-left: auto;
-                margin-right: auto;
                 width: 75%;
             }
-
             td, th{
-                text-align:left;
                 padding:8px;
             }
-            tr:nth-child{
-                background-color:#f2f2f2;
+            td{
+                background:#8797ab;
             }
             th{
-                background-color:#4B5A6C;
-                color: white;
+                background:#FF9836;
             }
+            tr:hover{
+                background-color: #ffbd80;
+            }
+            tr:hover td { background: transparent; }
             input{
                 width:25%;
+                background: #FF9836;
+                color:white;
+            }
+            ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: white;
+            opacity: 1; /* Firefox */
             }
             input[type=text]:focus,input[type=number]:focus,input[type=date]:focus{
                 background-color: lightblue;
             }
             select{
-            	 height:40px;
-                 display: inline-block;
-                 background: transparent;
-                 border: 1px solid rgba(0, 0, 0, 0.1);
-                 border-radius: .25rem;
-                 box-sizing: border-box;
-                 color: black;
+                height:40px;
+                display: inline-block;
+                color:white;
+                background: #FF9836;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: .25rem;
+                box-sizing: border-box;
             }
-            button{
-            	 height:40px;
-                 width:15%;
-                 display: inline-block;
-                 background: transparent;
-                 border: 1px solid rgba(0, 0, 0, 0.1);
-                 border-radius: .25rem;
-                 box-sizing: border-box;
-                 color: black;
+            select option {
+            color: black;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
             }
             input[type=text],input[type=number]{
-                 padding: 12px 20px;
-                 margin: 8px 0;
-                 display: inline-block;
-                 background: transparent;
-                 border: 1px solid rgba(0, 0, 0, 0.1);
-                 border-radius: .25rem;
-                 box-sizing: border-box;
-                 color: black;
-             }
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: .25rem;
+                box-sizing: border-box;
+                color: white;
+            }
              input[type=date]{
-                 padding: 12px 20px;
-                 margin: 8px 0;
-                 display: inline-block;
-                 background: transparent;
-                 border: 1px solid rgba(0, 0, 0, 0.1);
-                 border-radius: .25rem;
-                 box-sizing: border-box;
-                 color: black;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: .25rem;
+                box-sizing: border-box;
+                color: white;
              }
-             input[type=submit]{
-            	 padding-left: 12px;
-                 padding-bottom:12px;
-                 padding-top:6px;
-                 display: inline-block;
-                 background: transparent;
-                 border: 1px solid rgba(0, 0, 0, 0.1);
-                 border-radius: .25rem;
-                 box-sizing: border-box;
-                 color: black;
+            .center{
+                margin-left: auto;
+                margin-right: auto;
             }
             .SearchBar{
-                 align-self: center;
-                 border-collapse: collapse;
-                 margin: 25px 0;
-                 padding-left: 10px;
-                 font-size: 15px;
-                 color: black;
-                 min-width: 400px;
-                 box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+                align-self: center;
+                border-collapse: collapse;
+                margin: 25px 0;
+                padding-left: 10px;
+                font-size: 15px;
+                color: white;
+                min-width: 400px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+             }
+             .butA{
+                height:40px;
+                width:15%;
+                display: inline-block;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: .25rem;
+                box-sizing: border-box;
+                color: black;
              }
         </style>
     </head>
@@ -171,14 +171,14 @@
                 <input type="text" placeholder="Enter Zipcode" name="zip">
                 <br>
                 <input type="hidden" name="search" value="inputs">
-                <input type="submit" value="Search:">
+                <button class="butA" type ="submit">Search</button>
             </form>
 
 
         </div>
         <br>
         <h1>Registered Users</h1>
-        <table>
+        <table class="center">
             <tr>
                 <th>User ID</th>
                 <th>Username</th>
@@ -209,16 +209,16 @@
                         $sqlWHEREs = combine_stmts($sqlWHEREs);
 
                         $sqlstmt = "SELECT * FROM user $sqlWHEREs";
-                        echo $sqlstmt;
+                        //echo $sqlstmt;
                         $selectUsers = mysqli_query($connection, $sqlstmt);
                         while($row = mysqli_fetch_array($selectUsers, MYSQLI_ASSOC)){
                             print_Users($row);
                         }
 
-                        echo "Search Params => ['userid','company','email','street','city','state','zip'] = ['$userid','$company','$email','$street','$city','$state','$zip']";
+                        //echo "Search Params => ['userid','company','email','street','city','state','zip'] = ['$userid','$company','$email','$street','$city','$state','$zip']";
                     }
                     else{
-                        echo "<td>Please reload the page</td>";
+                        echo "<td align='>Please reload the page</td>";
                     }
                 }
                 else{
