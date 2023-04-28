@@ -190,6 +190,35 @@ body {
   color: #a1a1a1;
   padding: 10px 20px;
 }
+.credstable  {
+    align-self: center;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 20px;
+    font-family: Arial;
+    color: white;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+thead tr {
+    background-color: #FF9836;
+    color: #ffffff;
+    text-align: left;
+}
+
+th {
+    background-color: #FF9836;
+    color: #ffffff;
+    padding: 12px 15px;
+}
+
+td {
+    padding: 12px 15px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+}
 </style>
 <html>
 <title>Fuel Quoters</title>
@@ -218,8 +247,24 @@ body {
   </div>
   <div class="about-me">
     <div class="about-me-text">
-      <h2>About Us</h2>
-      <p>Hard working individuals with a passion for fuel quotes, with our use of Agile as our development methodology we kept our tasks on schedule and produced this product</p>
+    <table class="credstable">
+                <tr>
+                    <th>Derek Castillo</th>
+                    <td>Facilitate discussion, organize meetings, delegate tasks, signup page front+backend, input validation, getQuote page front+backend, pricing module implementation, display data, insert/fetch data from db, worked on sessions, unit tests, debugging</td>
+                </tr>
+                <tr>
+                    <th>Jacob Duarte</th>
+                    <td>Created and worked on admin page, quote history, and registered users.</td>
+                </tr>
+                <tr>
+                    <th>Justin Jose</th>
+                    <td>Helped refine UML, implemented style design choices used later on in the fuel quote form and login pages, created clientProfile and clientEdit pages (frontend and backend), set up the database on AWS, created the user and audit columns (logs user creation, profile edits, and quote requests with the use of triggers), and started implementation and assisted in the use of sessions (updated navigation bar allowing it to change depending on whether or not a user is signed in and whether they are an admin or regular client).</td>
+                </tr>
+                <tr>
+                    <th>Nadeem Karachi</th>
+                    <td>Backend for Login,logout, connecting sign up page to login page if new user. Helped format and style user view tables for registered users, helped with user login and logout, helped set up tables in database and connect some displays/views for user on web app. Created and helped design homepage for website.</td>
+                </tr>
+            </table>
     </div>
     <img src="https://thefader-res.cloudinary.com/private_images/w_640,c_limit,f_auto,q_auto:eco/DfrJkFyXcAA5b59_ytmfsj/young-thug-lil-durk-computer-meme.jpg" alt="me">
   </div>
