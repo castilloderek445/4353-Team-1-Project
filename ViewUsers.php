@@ -177,8 +177,10 @@
 
         </div>
         <br>
-        <h1>Registered Users</h1>
         <table class="center">
+            <tr>
+                <th colspan=10>Registered Users</th>
+            </tr>
             <tr>
                 <th>User ID</th>
                 <th>Username</th>

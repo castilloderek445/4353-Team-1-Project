@@ -1,7 +1,9 @@
 <?php
     include 'backend/UpdateBackend.php';
     include 'navbar.php';
-
+    
+    //user id is sent from View Users
+    //id is used to determine who's information we are changing
     $user_id = $_POST['current_id'];
     $connection = mysqli_connect("team1db.cbublt8spaue.us-east-2.rds.amazonaws.com","team1master","\$123Fuelquote456", "sys");
     $sql = "SELECT * FROM user WHERE User_id =" . $user_id;
@@ -157,21 +159,32 @@
                 <form method='post' id="updateinfo" action="AdminEditClient.php">
                     <tr>
                         <th><label for="name">Name: </label></th>
-                        <td><input type="text" name="Username" <?php if(empty($row['Username'])== true){ echo "placeholder ='No username...'";} else{ echo "placeholder ='", $row['Username'], "'";}?> ></td>
+                        <td><input type="text" name="Username" <?php if(empty($row['Username'])== true){ echo "placeholder ='No username...'";} else{ echo "value ='", $row['Username'], "'";}?> required ></td>
                     </tr>
                     <tr>
                         <th><label for="name">Street: </label></th>
-                        <td><input type="text" name="Street" <?php if(empty($row['Street'])== true){ echo "placeholder ='No street...'";}  else{ echo "placeholder ='", $row['Street'], "'";}?> ></td>
+                        <?php
+                        if (isset($errorMsg[0])) {
+                            echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[0] . "</p>";
+                        }
+                        ?>
+                        <td><input type="text" name="Street" <?php if(empty($row['Street'])== true){ echo "placeholder ='No street...'";}  else{ echo "value ='", $row['Street'], "'";}?> required></td>
                     </tr>
                     <tr>
                         <th><label for="name">City: </label></th>
-                        <td><input type="text" name="City" <?php if(empty($row['City'])== true){ echo "placeholder ='No city...'";}  else{ echo "placeholder ='", $row['City'], "'";}?> ></td>
+                        <td><input type="text" name="City" <?php if(empty($row['City'])== true){ echo "placeholder ='No city...'";}  else{ echo "value ='", $row['City'], "'";}?>required ></td>
+                        <?php
+                        if (isset($errorMsg[1])) {
+                            echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[1] . "</p>";
+                        }
+                        ?>
                     </tr>
                     <tr>
                         <th><label for="name">State: </label></th>
                         <td>
-                            <select name="State"> State:
-                                <option value="sel_state" selected>Select State</option>
+                            <select name="State" required> State:
+                            <?php if(empty($row['State'])!= true){ echo "<option value ='", $row['State'], "' selected>", $row['State'],"</option>";}?>
+                                <option value="sel_state">Select State</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -225,10 +238,20 @@
                                 <option value="WY">Wyoming</option>
                             </select>
                         </td>
+                        <?php
+                        if (isset($errorMsg[2])) {
+                            echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[2] . "</p>";
+                        }
+                        ?>
                     </tr>
                     <tr>
                         <th><label for="name">Zip: </label></th>
-                        <td><input type="text" name="Zip" <?php if(empty($row['Zip'])== true){ echo "placeholder ='No zipcode...'";}  else{ echo "placeholder ='", $row['Zip'], "'";}?> ></td>
+                        <td><input type="text" name="Zip" <?php if(empty($row['Zip'])== true){ echo "placeholder ='No zipcode...'";}  else{ echo "value ='", $row['Zip'], "'";}?> required></td>
+                        <?php
+                        if (isset($errorMsg[3])) {
+                            echo "<p style='color:red; font-size:12px; margin-left:9px;'>" . $errorMsg[3] . "</p>";
+                        }
+                        ?>
                     </tr>
                     <input type='hidden' name='current_id' value=<?php echo $row['User_id']; ?>>
                 </form>
