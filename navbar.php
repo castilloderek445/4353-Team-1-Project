@@ -32,7 +32,7 @@ if (!empty($_SESSION['userid'])) {
     //If user is logged in, the option to log out will display
     $log = 'Log Out';
     $logref = $BackSlash.'backend/logout_backend.php';
-    echo $_SESSION['userid'];
+    //echo $_SESSION['userid'];
 } else {
     //If user is not logged in, the option to log in will display
     $log = 'Log In';
